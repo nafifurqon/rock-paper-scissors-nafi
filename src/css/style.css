@@ -1,0 +1,689 @@
+body {
+    background-color: black;
+}
+
+/* main css */
+.main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    height: 100vh;
+    background-image: url('../images/main-bg.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: 100vw 100vh;
+    color: white;
+}
+
+.main > .navbar{
+    background-color:rgba(0,0,0,.2);
+}
+
+.main > .navbar > .container > .navbar-brand {
+    font-size: 1.5rem;
+}
+
+.main > .navbar > .container > .navbar-collapse > ul.navbar-nav.left {
+    width: 40%;
+    justify-content: space-between;
+}
+
+.main > .navbar > .container > .navbar-collapse > ul.navbar-nav.right {
+    width: 16%;
+    justify-content: space-between;
+}
+
+.main > .navbar > .container > .navbar-collapse > .navbar-nav > .nav-item > .nav-link {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.main > .navbar > .container > .navbar-collapse > .navbar-nav > .nav-item > .nav-link:hover {
+    text-decoration: underline;
+}
+
+.main > main > h1 {
+    font-size: 4.5rem;
+    font-weight: bold;
+}
+
+.main > main > h3 {
+    font-size: 1.5rem;
+}
+
+.main > main > h1, 
+.main > main > h3 {
+    letter-spacing: 2px;
+}
+
+.main > main > .btn-cta {
+    width: 15rem;
+    color: black;
+    background: linear-gradient(194.68deg, #FFB548 11.27%, #F3AF34 90.4%);
+    font-family: bold;
+}
+
+.main > footer > p {
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.main > footer > .icon-scrolldown {
+    cursor: pointer;
+}
+/* end main css */
+
+/* about css */
+.about {
+    background: url('../images/the-games-bg.jpg');
+    background-repeat: no-repeat; 
+    background-size: 100vw 100vh;
+    color: white;
+    height: 100vh;
+}
+
+.about > .container > .row > .col-lg-8 > .carousel > .row > .col-10 > ol.carousel-indicators > li {
+    border-radius: 50%;
+    border: 1px solid white;
+    background: transparent;
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+.about > .container > .row > .col-lg-8 > .carousel > .row > .col-10 > ol.carousel-indicators > li.active {
+    background-color: white;
+}
+
+.about > .container > .row > .col-lg-12 > .question {
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+}
+
+.about > .container > .row > .col-lg-4 > .title {
+    letter-spacing: 3px;
+    font-size: 3.5rem;
+}
+/* end about css */
+
+/* feature css */
+.feature {
+    background: url('../images/features.jpg');
+    background-repeat: no-repeat; 
+    background-size: 100vw 100vh;
+    color: white;
+    height: 100vh;
+}
+
+.feature > .row > .col-md-6 > .right {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature > .row > .col-md-6 > .right > .row > .text-feature > .sub-title {
+    color: #FFB548;
+}
+
+.feature > .row > .col-md-6 > .right > .row > .text-feature > .paragraph {
+    font-size: 1.125rem;
+}
+
+.feature > .row > .col-md-6 > .right > .row > .progress-feature > .bullet-fill {
+    background-color: white;
+    height: 0.875rem;
+    width: 0.875rem;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.feature > .row > .col-md-6 > .right > .row > .progress-feature > .progress-bar {
+    height: 7rem;
+    width: 0.0625rem;
+    background-color: white;
+    margin-left: 0.4rem;
+}
+
+.feature > .row > .col-md-6 > .right > .row > .progress-feature > .bullet-border {
+    height: 0.875rem;
+    width: 0.875rem;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.feature > .row > .col-md-6 > .right > .row > .progress-feature > .progress-empty {
+    padding-top: 4rem;
+}
+/* end feature css */
+
+/* system css */
+.system {
+    background: url('../images/requirements.png');
+    background-repeat: no-repeat; 
+    background-size: 100vw 100vh;
+    color: white;
+    height: 100vh;
+}
+
+.system > .flex-wrapper {
+    height: 80%;
+}
+
+.system > .container > .row > .col-md-auto > .title {
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+}
+
+.system > .container > .row > .col-md-7 > .question {
+    font-size: 0.875rem;
+}
+
+.system > .container > .requirement-table > .col-md-6 > table > tbody > tr > td {
+    border: 1px solid #979797;
+}
+
+.system > .container > .requirement-table > .col-md-6 > table > tbody > tr > td > h4 {
+    color: #FFB548;
+}
+
+.system > .container > .row > .col-md-7 > .question, 
+.system > .container > .requirement-table > .col-md-6 > table > tbody > tr > td > h4 {
+    letter-spacing: 2px;
+}
+/* end system css */
+
+/* top-score css */
+.top-score {
+    background: url('../images/top-score-bg.jpg');
+    background-repeat: no-repeat; 
+    background-size: auto;
+    color: white;
+    height: 100vh;
+}
+
+.top-score > .container > .row > .left > .title {
+    letter-spacing: 3px;
+}
+
+.top-score > .container > .row > .left > .message {
+    width: 60%;
+}
+
+.top-score > .container > .row > .left > .btn-yellow {
+    background: linear-gradient(194.68deg, #FFB548 11.27%, #F3AF34 90.4%);
+    color: black;
+}
+
+.top-score > .container > .row > .right > .row > .card {
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+}
+
+.top-score > .container > .row > .right > .row > .card > .card-body {
+    background-color: rgba(26,27,28,0.9);
+    border-radius: 10px;
+    border: none;
+    /* padding: 1rem; */
+}
+
+.top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-3 > .img {
+    width: 3.875rem;
+    height: 3.875rem;
+    margin: -0.1875rem 0 0 -0.375rem;
+}
+
+.top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-3 > .img-bg-yellow {
+    width: 3.875rem;
+    height: 3.875rem;
+}
+
+.top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-8 > .name {
+    color: #FFB548;
+    letter-spacing: 2px;
+}
+
+.top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-8 > .job, 
+.top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-12 > .date {
+    color: #8c8c8d;
+}
+
+.top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-12 > .quotes {
+    font-size: 1.125rem;
+}
+
+.top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-12 > .date {
+    font-size: 0.875rem;
+}
+/* end top-score css */
+
+/* subscribe css */
+.subscribe-wrapper {
+    height: 100vh;
+    background-color: black;
+    background-size: 100vh;
+    color: white;
+}
+
+.subscribe-wrapper > .container > .row > .img-subscribe-wrapper {
+    background-image: url('../images/img-subscribe.png');
+    background-repeat: no-repeat; 
+    background-size: contain;
+    background-position: center;
+}
+
+.subscribe-wrapper > .container > .row > .right > .question {
+    letter-spacing: 2px;
+}
+
+.subscribe-wrapper > .container > .row > .right > .title {
+    font-size: 5rem;
+    letter-spacing: 3px;
+}
+
+.btn-subscribe {
+    background: linear-gradient(194.68deg, #FFB548 11.27%, #F3AF34 90.4%);
+    color: black;
+}
+
+.subscribe-wrapper > footer > .nav-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subscribe-wrapper > footer > .nav-footer > .right {
+    width: 60vw;
+}
+
+.subscribe-wrapper > footer > .nav-footer > .right > .nav-footer-wrapper {
+    list-style-type: none;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.subscribe-wrapper > footer > .nav-footer > .right > .nav-footer-wrapper > .nav-footer-item > a {
+    color: white;
+    font-size: 0.75rem;
+}
+
+.subscribe-wrapper > footer > .nav-footer > .right > .nav-footer-wrapper > .nav-footer-item > a:hover {
+    text-decoration: none;
+}
+
+.subscribe-wrapper  > footer > .footer > .container > .row {
+    border-top: 1px solid #8c8c8d;
+}
+
+.subscribe-wrapper > footer > .footer > .container > .row > .rights {
+    font-size: 0.75rem;
+    color: #8c8c8d;
+}
+
+.subscribe-wrapper > footer > .footer > .container > .row > .terms {
+    font-size: 0.75rem;
+    letter-spacing: 0.1rem;
+}
+
+.subscribe-wrapper > footer {
+    background-color: black;
+}
+/* end subscribe css */
+
+@media (min-width: 768px) {
+    .top-score > .container > .row > .right {
+        height: 100vh;
+    }
+}
+
+/* Laptop 1024px */
+@media (max-width: 1024px) {
+    /* about css */
+    .about > .container > .row > .col-lg-4 > .title {
+        font-size: 2.875rem;
+    }    
+    /* end about css */
+
+    /* system css */
+    .system > .container > .row > .col-md-auto > .title{
+        font-size: 3.25rem;
+    }
+    
+    .system > .container > .requirement-table > .col-md-6 > table > tbody > tr > td > h4 {
+        font-size: 1.375rem;
+    }
+    
+    .system > .container > .requirement-table > .col-md-6 > table > tbody > tr > td > p {
+        font-size: 0.875rem;
+    }
+    /* end system css */
+
+    /* top-score css */
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-8 > .name {
+        font-size: 1.375rem;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-8 > .job {
+        font-size: 0.875rem;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-12 > .quotes {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-12 > .date {
+        font-size: 0.75rem;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body {
+        padding: 0.5rem;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-3 > .img {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-3 > .img-bg-yellow {
+        width: 3rem;
+        height: 3rem;
+    }
+    /* end top-score css */
+
+    /* subscribe css */
+    .subscribe-wrapper > .container > .row > .right > .paragraph {
+        font-size: 0.875rem;
+    }
+    /* end subscribe css */
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    /* main css */
+    .main > main > h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    /* end main css */
+
+    /* system css */
+    .system > .container > .row > .col-md-7 > .question {
+        display: none;
+    }
+    /* end system css */
+
+    /* top-score css */
+    .top-score > .container > .row > .right > .row > .card {
+        width: 100%;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-12 > .quotes {
+        font-size: 0.875rem;
+    }
+    /* end top-score css */
+
+    /* subscribe css */
+    .img-subscribe-wrapper {
+        display: none;
+    }
+
+    .subscribe-wrapper > footer > .nav-footer {
+        display: block;
+    }
+
+    .subscribe-wrapper > footer > .nav-footer > .left {
+        display: none;
+    }
+
+    .subscribe-wrapper > footer > .nav-footer > .right {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .subscribe-wrapper > footer > .nav-footer > .right > .nav-footer-wrapper {
+        padding-left: 0;
+    }
+
+    .subscribe-wrapper > footer > .footer > .container > .row {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    /* end subscribe css */
+}
+
+/* Surface Duo 540px */
+@media (max-width: 540px) {
+    .feature > .row > .col-md-6 > .right > .row > .progress-feature {
+        width: 10%;
+    }
+
+    .feature > .row > .col-md-6 > .right > .row > .text-feature {
+        width: 90%;
+    }
+
+    .feature > .row > .col-md-6 > .right > .row > .col-12 > h1.display-4{
+        font-size: 2.5rem;
+    }
+}
+
+/* Mobile-L 425px */
+@media (max-width: 425px){
+    /* main css */
+    .main {
+        background-position: center;
+        background-size: cover;
+    }
+    /* end main css */
+
+    /* about css */
+    .about {
+        background-position: center;
+        background-size: cover;
+    }
+    /* end about css */
+
+    /* feature css */
+    .feature {
+        background-position: center;
+        background-size: cover;
+    }
+    /* end feature css */
+    
+    /* system css */
+    .system {
+        background-position: center;
+        background-size: cover;
+    }
+
+    .system > .container > .row > .col-md-auto > .title {
+        font-size: 2rem;
+    }
+
+    .system > .container > .requirement-table > .col-md-6 > table > tbody > tr > td {
+        padding: 0.25rem !important;
+    }    
+    /* end system css */
+
+    /* top-score css */
+    .top-score {
+        background-position: center;
+        background-size: cover;
+    }
+
+    .top-score > .container > .row > .left > .message {
+        width: 100%;
+    }
+    /* end top-score css */
+
+    /* subscribe css */
+    .subscribe-wrapper > .container > .row > .right > .title {
+        font-size: 4.5rem;
+    }
+
+    .btn-subscribe {
+        margin-bottom: 0.5rem;
+    }
+
+    .subscribe-wrapper > footer > .footer > .container > .row {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .subscribe-wrapper > footer > .footer > .container > .row > .terms {
+        font-size: 0.75rem;
+    }
+    /* end subscribe css */
+}
+
+/* Mobile-M 375px */
+@media (max-width: 375px){
+    /* system css */
+    .system > .container > .requirement-table > .col-md-6 > table > tbody > tr > td > h4 {
+        font-size: 1rem;
+    }
+    
+    .system > .container > .requirement-table > .col-md-6 > table > tbody > tr > td > p {
+        font-size: 0.75rem;
+    }
+    /* end system css */
+
+    /* subscribe css */
+    .subscribe-wrapper > .container > .row > .right > .title {
+        font-size: 3.5rem;
+    }
+    /* end subscribe css */
+}
+
+/* Mobile-S and (Galaxy S5 & Moto G4) 360px */
+@media (max-width: 360px) {
+    .top-score > .container > .row > .left > .title {
+        font-size: 2.125rem;
+    }
+
+    .top-score > .container > .row > .left > .btn-yellow {
+        font-size: 1rem;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body {
+        padding: 0.5rem !important;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-12 > .quotes {
+        margin-top: 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-3 > .img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-3 > .img-bg-yellow {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-8 > .name {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile-S 320px */
+@media (max-width: 320px) {
+    /* main css */
+    .main > main > h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    /* end main css */
+
+    /* feature css */
+    .feature > .row > .col-md-6 > .right > .row > .progress-feature {
+        width: 10%;
+    }
+
+    .feature > .row > .col-md-6 > .right > .row > .text-feature {
+        width: 85%;
+    }
+
+    .feature > .row > .col-md-6 > .right > .row > .col-12 > h1.display-4{
+        font-size: 2.5rem;
+    }
+    
+    .feature > .row > .col-md-6 > .right > .row > .text-feature > .sub-title {
+        font-size: 1.125rem;
+    }
+
+    .feature > .row > .col-md-6 > .right > .row > .text-feature > .paragraph {
+        font-size: 1rem;
+    }
+
+    .feature > .row > .col-md-6 > .right > .row > .progress-feature > .progress-bar {
+        height: 7.625rem;
+    }
+
+    .feature > .row > .col-md-6 > .right > .row > .progress-feature > .progress-empty {
+        padding-top: 3.5rem;
+    }
+    /* end feature css */
+
+    /* about css */
+    .about > .container > .row > .col-lg-4 > .title {
+        font-size: 2.25rem;
+    }  
+    /* end about css */
+
+    /* system css */
+    .system > .container > .row > .col-md-auto > .title {
+        font-size: 1.875rem;
+    }
+    /* end system css */
+
+    /* top-score css */
+    .top-score > .container > .row > .left > .title {
+        font-size: 1.75rem;
+    }
+    
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-12 > .quotes {
+        /* font-size: 0.75rem; */
+        margin-top: 0.25rem !important;
+    }
+
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-3 > .img {
+        width: 2.125rem;
+        height: 2.125rem;
+        margin: 0 0 0 -0.375rem;
+    }
+    
+    .top-score > .container > .row > .right > .row > .card > .card-body > .row > .col-3 > .img-bg-yellow {
+        display: none;
+    }
+    /* end top-score css */
+
+    /* subscribe css */
+    .subscribe-wrapper > .container > .row > .right > .title {
+        font-size: 2.75rem;
+    }
+    /* end subscribe css */
+}
+
+/* Galaxy Fold 280px (base on google chrome inspect elements) */
+@media (max-width: 280px) {
+    /* main css */
+    .main > main > h1 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    /* end main css */
+
+    /* system css */
+    .system > .container > .row > .col-md-auto > .title {
+        font-size: 1.625rem;
+    }
+    /* end system css */
+}
+
+

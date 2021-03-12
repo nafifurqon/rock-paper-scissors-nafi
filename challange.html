@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Chapter 4 - JS - Challenge</title>
+    </head>
+    <body>
+    </body>
+    <script type="text/javascript">
+        function matchRPS(hand1, hand2) {
+            var result;
+            var hand1LowerCase = hand1.toLowerCase();
+            var hand2LowerCase = hand2.toLowerCase();
+
+            if (hand1LowerCase == hand2LowerCase) {
+                result = "draw";
+            }
+
+            else if(
+                (hand1LowerCase != "paper" && hand1LowerCase != "rock" && hand1LowerCase != "scissors") ||
+                (hand2LowerCase != "paper" && hand2LowerCase != "rock" && hand2LowerCase != "scissors")
+            ){
+                result = "input salah";
+            }
+            
+            else if (hand1LowerCase == "paper") {
+                if (hand2LowerCase == "rock") {
+                    result = "hand1";
+                }
+                if (hand2LowerCase == "scissors") {
+                    result = "hand2";
+                }
+            }
+            
+            else if (hand1LowerCase == "rock") {
+                if (hand2LowerCase == "scissors") {
+                    result = "hand1";
+                }
+                if (hand2LowerCase == "paper"){
+                    result = "hand2";
+                }
+            }
+            
+            else if (hand1LowerCase == "scissors") {
+                if (hand2LowerCase == "rock") {
+                    result = "hand2";
+                } 
+                if (hand2LowerCase == "paper"){
+                    result = "hand1";
+                }
+            } 
+            
+            
+
+            return result;
+        }
+
+        console.log(matchRPS("paper", "rock")); //hand1
+        console.log(matchRPS("rock", "paper")); //hand2
+        console.log(matchRPS("paper", "scissors")); //hand2
+        console.log(matchRPS("paper", "paper")); //draw
+        console.log(matchRPS("kertas", "paper")); //input salah
+        console.log(matchRPS("paper", "batu")); //input salah
+       
+    </script>
+</html>
