@@ -45,11 +45,15 @@ body {
     cursor: pointer;
     padding: 1rem;
     border-radius: 10%;
+    background: none;
+    border: none;
 }
 
 .player-choice-box:hover,
-.com-choice-box:hover {
+.com-choice-box:hover,
+.player-choice-box:focus {
     background-color: #C4C4C4;
+    outline: none;
 }
 
 .player-1-result {
