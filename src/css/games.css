@@ -35,6 +35,16 @@ body {
     width: 8vw;
 }
 
+.btn-refresh {
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.btn-refresh:focus {
+    outline: none;
+}
+
 .refresh {
     width: 6vw;
     cursor: pointer;

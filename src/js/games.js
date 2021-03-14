@@ -1,6 +1,7 @@
 const playerChoice = document.getElementsByClassName('player-choice-box');
 // console.log(playerChoice)
 // console.log(playerChoice[0].childNodes[1]);
+let comChoice;
 
 function comChooses() {
     const arrayComChoice = ["rock", "paper", "scissors"];
@@ -12,50 +13,64 @@ function comChooses() {
 
 // console.log(document.querySelector(`.com-choice-box#${comChoice}`))
 
-const action = (e) => {
-    const event = e.target || e.srcElement;
-    const playerChoice = event.id;
-
-    const comChoice = comChooses();
-    console.log("Player 1:", playerChoice);
-    console.log("Com:", comChoice);
-
+function chooseTheWinner(playerChoice, comChoice) {
+    let result;
+    
     if(playerChoice == comChoice){
-        console.log("DRAW");
+        result = "draw";
     } 
 
     if(playerChoice == "rock"){
         if(comChoice == "paper"){
-            console.log("COM WIN");
+            result = "com";
         }
 
         if(comChoice == "scissors"){
-            console.log("PLAYER 1 WIN")
+            result = "player 1";
         }
     }
 
     if(playerChoice == "paper"){
         if(comChoice == "rock"){
-            console.log("PLAYER 1 WIN");
+            result = "player 1";
         }
 
         if(comChoice == "scissors"){
-            console.log("COM WIN")
+            result = "com";
         }
     }
 
     if(playerChoice == "scissors"){
         if(comChoice == "rock"){
-            console.log("COM WIN");
+            result = "com";
         }
 
         if(comChoice == "paper"){
-            console.log("PLAYER 1 WIN")
+            result = "player 1";
         }
     }
+
+    return result;
+}
+
+const action = (e) => {
+    const event = e.target || e.srcElement;
+    const playerChoice = event.id;
+
+    comChoice = comChooses();
+    console.log("Player 1:", playerChoice);
+    console.log("Com:", comChoice);
+    console.log("Result:", chooseTheWinner(playerChoice, comChoice));
 }
 
 for(let i=0; i < playerChoice.length; i++){
     const playerItem = playerChoice[i];
     playerItem.onclick = action;
+}
+
+
+function refresh() {
+    if(comChoice){
+        document.querySelector(`.com-choice-box#${comChoice}`).classList.remove('active');
+    }
 }
