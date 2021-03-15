@@ -77,6 +77,14 @@ body {
     transform: rotate(-30deg);
 }
 
+.draw-result {
+    color: white;
+    background-color: #035B0C;
+    padding: 1.875rem 3rem;
+    border-radius: 10%;
+    transform: rotate(-30deg);
+}
+
 .com-result {
     color: white;
     background-color: #4C9654;
