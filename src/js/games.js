@@ -50,6 +50,75 @@ function chooseTheWinner(playerChoice, comChoice) {
     return result;
 }
 
+function showPlayer1Win() {
+    if(resultBody.className == 'versus-wrapper'){
+        resultBody.classList.replace('versus-wrapper', 'player-1-result');
+        while (resultBody.firstChild) {
+            resultBody.removeChild(resultBody.firstChild);
+        }
+    }
+
+    const player1Text = document.createElement('h2');
+    const player1WinText = document.createElement('h2');
+    
+    player1Text.classList.add('text-uppercase');
+    player1Text.classList.add('p-0');
+    player1Text.classList.add('m-0');
+    player1Text.innerHTML = 'player 1';
+    
+    player1WinText.classList.add('text-uppercase');
+    player1WinText.classList.add('p-0');
+    player1WinText.classList.add('m-0');
+    player1WinText.innerHTML = 'win';
+
+    resultBody.appendChild(player1Text);
+    resultBody.appendChild(player1WinText);
+}
+
+function showComWin() {
+    if(resultBody.className == 'versus-wrapper'){
+        resultBody.classList.replace('versus-wrapper', 'com-result');
+        
+        while (resultBody.firstChild) {
+            resultBody.removeChild(resultBody.firstChild);
+        }
+    }
+
+    const comText = document.createElement('h2');
+    const comWinText = document.createElement('h2');
+    
+    comText.classList.add('text-uppercase');
+    comText.classList.add('p-0');
+    comText.classList.add('m-0');
+    comText.innerHTML = 'com';
+    
+    comWinText.classList.add('text-uppercase');
+    comWinText.classList.add('p-0');
+    comWinText.classList.add('m-0');
+    comWinText.innerHTML = 'win';
+
+    resultBody.appendChild(comText);
+    resultBody.appendChild(comWinText);
+}
+
+function showDraw() {
+    if(resultBody.className == 'versus-wrapper'){
+        resultBody.classList.replace('versus-wrapper', 'draw-result');
+        while (resultBody.firstChild) {
+            resultBody.removeChild(resultBody.firstChild);
+        }
+    }
+
+    const drawText = document.createElement('h2');
+    
+    drawText.classList.add('text-uppercase');
+    drawText.classList.add('p-0');
+    drawText.classList.add('m-0');
+    drawText.innerHTML = 'draw';
+
+    resultBody.appendChild(drawText);
+}
+
 const action = (e) => {
     const event = e.target || e.srcElement;
     const playerChoice = event.id;
@@ -62,72 +131,15 @@ const action = (e) => {
     console.log("Result:", result);
 
     if(result == "player 1"){
-        if(resultBody.className == 'versus-wrapper'){
-            resultBody.classList.replace('versus-wrapper', 'player-1-result');
-            while (resultBody.firstChild) {
-                resultBody.removeChild(resultBody.firstChild);
-            }
-        }
-
-        const player1Text = document.createElement('h2');
-        const player1WinText = document.createElement('h2');
-        
-        player1Text.classList.add('text-uppercase');
-        player1Text.classList.add('p-0');
-        player1Text.classList.add('m-0');
-        player1Text.innerHTML = 'player 1';
-        
-        player1WinText.classList.add('text-uppercase');
-        player1WinText.classList.add('p-0');
-        player1WinText.classList.add('m-0');
-        player1WinText.innerHTML = 'win';
-
-        resultBody.appendChild(player1Text);
-        resultBody.appendChild(player1WinText);
+        showPlayer1Win();
     }
 
     if(result == "com"){
-        if(resultBody.className == 'versus-wrapper'){
-            resultBody.classList.replace('versus-wrapper', 'com-result');
-            
-            while (resultBody.firstChild) {
-                resultBody.removeChild(resultBody.firstChild);
-            }
-        }
-
-        const comText = document.createElement('h2');
-        const comWinText = document.createElement('h2');
-        
-        comText.classList.add('text-uppercase');
-        comText.classList.add('p-0');
-        comText.classList.add('m-0');
-        comText.innerHTML = 'com';
-        
-        comWinText.classList.add('text-uppercase');
-        comWinText.classList.add('p-0');
-        comWinText.classList.add('m-0');
-        comWinText.innerHTML = 'win';
-
-        resultBody.appendChild(comText);
-        resultBody.appendChild(comWinText);
+        showComWin();
     }
 
     if(result == "draw"){
-        if(resultBody.className == 'versus-wrapper'){
-            resultBody.classList.replace('versus-wrapper', 'draw-result');
-            while (resultBody.firstChild) {
-                resultBody.removeChild(resultBody.firstChild);
-            }
-        }
-
-        const drawText = document.createElement('h2');
-        
-        drawText.classList.add('text-uppercase');
-        drawText.classList.add('p-0');
-        drawText.classList.add('m-0');
-        drawText.innerHTML = 'draw';
-
-        resultBody.appendChild(drawText);
+        showDraw();
     }
 }
 
