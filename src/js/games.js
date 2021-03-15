@@ -50,12 +50,16 @@ function chooseTheWinner(playerChoice, comChoice) {
     return result;
 }
 
+function removeAllChild() {
+    while (resultBody.firstChild) {
+        resultBody.removeChild(resultBody.firstChild);
+    }
+}
+
 function showPlayer1Win() {
     if(resultBody.className == 'versus-wrapper'){
         resultBody.classList.replace('versus-wrapper', 'player-1-result');
-        while (resultBody.firstChild) {
-            resultBody.removeChild(resultBody.firstChild);
-        }
+        removeAllChild();
     }
 
     const player1Text = document.createElement('h2');
@@ -78,10 +82,7 @@ function showPlayer1Win() {
 function showComWin() {
     if(resultBody.className == 'versus-wrapper'){
         resultBody.classList.replace('versus-wrapper', 'com-result');
-        
-        while (resultBody.firstChild) {
-            resultBody.removeChild(resultBody.firstChild);
-        }
+        removeAllChild();
     }
 
     const comText = document.createElement('h2');
@@ -104,9 +105,7 @@ function showComWin() {
 function showDraw() {
     if(resultBody.className == 'versus-wrapper'){
         resultBody.classList.replace('versus-wrapper', 'draw-result');
-        while (resultBody.firstChild) {
-            resultBody.removeChild(resultBody.firstChild);
-        }
+        removeAllChild();
     }
 
     const drawText = document.createElement('h2');
@@ -154,9 +153,7 @@ function refresh() {
         document.querySelector(`.com-choice-box#${comChoice}`).classList.remove('active');
     }
 
-    while (resultBody.firstChild) {
-        resultBody.removeChild(resultBody.firstChild);
-    }
+    removeAllChild();
 
     resultBody.className = '';
     resultBody.classList.add('versus-wrapper')
