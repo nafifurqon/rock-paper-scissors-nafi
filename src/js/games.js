@@ -1,4 +1,3 @@
-const playerChoice = document.getElementsByClassName('player-choice-box');
 let comChoice;
 const resultBody = document.getElementById('result-body');
 
@@ -118,9 +117,9 @@ function showDraw() {
     resultBody.appendChild(drawText);
 }
 
-const action = (e) => {
-    const event = e.target || e.srcElement;
-    const playerChoice = event.id;
+function action(event) {
+    const eventButton = event.target || event.srcElement;
+    const playerChoice = eventButton.id;
 
     comChoice = comChooses();
     const result = chooseTheWinner(playerChoice, comChoice);
@@ -142,12 +141,6 @@ const action = (e) => {
     }
 }
 
-for(let i=0; i < playerChoice.length; i++){
-    const playerItem = playerChoice[i];
-    playerItem.onclick = action;
-}
-
-
 function refresh() {
     if(comChoice){
         document.querySelector(`.com-choice-box#${comChoice}`).classList.remove('active');
@@ -156,7 +149,7 @@ function refresh() {
     removeAllChild();
 
     resultBody.className = '';
-    resultBody.classList.add('versus-wrapper')
+    resultBody.classList.add('versus-wrapper');
     const versusText = document.createElement('h2');
 
     versusText.classList.add('text-uppercase');
