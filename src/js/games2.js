@@ -167,34 +167,36 @@ const resultBody = document.getElementById('result-body');
 function action(event) {
     const eventButton = event.target || event.srcElement;
 
-    let Player1 = new Human(eventButton.id, "Player 1")
-    let Com = new Computer();
-    let Games = new Match(Player1, Com);
-    let Help = new DomHelper(resultBody);
+    if(resultBody.classList.contains('versus-wrapper')){
+        let Player1 = new Human(eventButton.id, "Player 1")
+        let Com = new Computer();
+        let Games = new Match(Player1, Com);
+        let Help = new DomHelper(resultBody);
+        
+        const result = Games.getResult();
+        comHand = Com.hand;
+        const player1Hand = Player1.hand;
     
-    const result = Games.getResult();
-    comHand = Com.hand;
-    const player1Hand = Player1.hand;
-
-    if(result == "player 1"){
-        Help.showPlayer1Win();
+        if(result == "player 1"){
+            Help.showPlayer1Win();
+        }
+    
+        if(result == "com"){
+            Help.showComWin();
+        }
+    
+        if(result == "draw"){
+            Help.showDraw();
+        }
+    
+        console.log(`${Player1.name}: ${player1Hand}`);
+        console.log(`${Com.name}: ${comHand}`, );
+        console.log("Result:", result);
     }
-
-    if(result == "com"){
-        Help.showComWin();
-    }
-
-    if(result == "draw"){
-        Help.showDraw();
-    }
-
-    console.log("Player 1:", player1Hand);
-    console.log("Com:", comHand);
-    console.log("Result:", result);
 }
 
 function refresh() {
-    if(comHand){
+    if(comHand && !resultBody.classList.contains('versus-wrapper')){
         document.querySelector(`.com-choice-box#${comHand}`).classList.remove('active');
     }
 
