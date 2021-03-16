@@ -19,8 +19,8 @@ body {
     background-color:rgba(0,0,0,.2);
 }
 
-.main > .navbar > .container > .navbar-brand {
-    font-size: 1.5rem;
+.main > .navbar > .container > .navbar-brand > .logo {
+    width: 3vw;
 }
 
 .main > .navbar > .container > .navbar-collapse > ul.navbar-nav.left {
@@ -405,6 +405,10 @@ body {
         font-size: 3rem;
         font-weight: bold;
     }
+
+    .main > .navbar > .container > .navbar-brand > .logo {
+        width: 5vw;
+    }
     /* end main css */
 
     /* system css */
@@ -456,6 +460,12 @@ body {
 
 /* Surface Duo 540px */
 @media (max-width: 540px) {
+    /* main css */
+    .main > .navbar > .container > .navbar-brand > .logo {
+        width: 8vw;
+    }
+    /* end main css */
+    
     .feature > .row > .col-md-6 > .right > .row > .progress-feature {
         width: 10%;
     }
@@ -475,6 +485,10 @@ body {
     .main {
         background-position: center;
         background-size: cover;
+    }
+
+    .main > .navbar > .container > .navbar-brand > .logo {
+        width: 10vw;
     }
     /* end main css */
 
@@ -597,6 +611,10 @@ body {
     .main > main > h1 {
         font-size: 2.5rem;
         font-weight: bold;
+    }
+
+    .main > .navbar > .container > .navbar-brand > .logo {
+        width: 12vw;
     }
     /* end main css */
 
