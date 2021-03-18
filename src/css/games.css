@@ -37,7 +37,6 @@ body {
 
 .btn-refresh {
     background: none;
-    outline: none;
     border: none;
 }
 
@@ -59,11 +58,6 @@ body {
 }
 
 .player-choice-box:hover,
-.player-choice-box:focus {
-    background-color: #C4C4C4;
-    outline: none;
-}
-
 .active {
     background-color: #C4C4C4;
     outline: none;
