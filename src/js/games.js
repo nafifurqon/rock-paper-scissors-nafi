@@ -10,8 +10,6 @@ class Player {
     }
 
     getHand(){
-        document.querySelector(`.player-choice-box#${this.hand}`).classList.add('active');
-
         return this.hand;
     }
 }
@@ -19,6 +17,12 @@ class Player {
 class Human extends Player {
     constructor(hand, name){
         super(hand, name);
+    }
+
+    getHand(){
+        document.querySelector(`.player-choice-box#${this.hand}`).classList.add('active');
+
+        return this.hand;
     }
 }
 
@@ -191,10 +195,8 @@ function action(event) {
         if(result == "draw"){
             Help.showDraw();
         }
-    
-        console.log(`${Player1.name}: ${player1Hand}`);
-        console.log(`${Com.name}: ${comHand}`, );
-        console.log("Result:", result == "draw" ? result : `${result} win`);
+        
+        console.log(`${Player1.name}: ${player1Hand}. ${Com.name}: ${comHand}. Result: ${result == "draw" ? result : result+' win'}`);
     }
 }
 
