@@ -9,7 +9,7 @@ body {
     flex: 1;
     justify-content: space-between;
     height: 100vh;
-    background-image: url('../images/main-bg.jpg'); 
+    background-image: url('../images/landing/main-bg.jpg'); 
     background-repeat: no-repeat; 
     background-size: 100vw 100vh;
     color: white;
@@ -76,7 +76,7 @@ body {
 
 /* about css */
 .about {
-    background: url('../images/the-games-bg.jpg');
+    background: url('../images/landing/the-games-bg.jpg');
     background-repeat: no-repeat; 
     background-size: 100vw 100vh;
     color: white;
@@ -108,7 +108,7 @@ body {
 
 /* feature css */
 .feature {
-    background: url('../images/features.jpg');
+    background: url('../images/landing/features.jpg');
     background-repeat: no-repeat; 
     background-size: 100vw 100vh;
     color: white;
@@ -159,7 +159,7 @@ body {
 
 /* system css */
 .system {
-    background: url('../images/requirements.png');
+    background: url('../images/landing/requirements.png');
     background-repeat: no-repeat; 
     background-size: 100vw 100vh;
     color: white;
@@ -195,7 +195,7 @@ body {
 
 /* top-score css */
 .top-score {
-    background: url('../images/top-score-bg.jpg');
+    background: url('../images/landing/top-score-bg.jpg');
     background-repeat: no-repeat; 
     background-size: auto;
     color: white;
@@ -267,7 +267,7 @@ body {
 }
 
 .subscribe-wrapper > .container > .row > .img-subscribe-wrapper {
-    background-image: url('../images/img-subscribe.png');
+    background-image: url('../images/landing/img-subscribe.png');
     background-repeat: no-repeat; 
     background-size: contain;
     background-position: center;
