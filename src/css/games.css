@@ -36,8 +36,6 @@ body {
 }
 
 .btn-refresh {
-    background: none;
-    border: none;
     padding: 0.5rem;
     border-radius: 50%;
 }
@@ -55,6 +53,11 @@ body {
 .com-choice-box {
     padding: 1rem;
     border-radius: 10%;
+}
+
+.player-choice-box,
+.com-choice-box,
+.btn-refresh {
     background: none;
     border: none;
 }
