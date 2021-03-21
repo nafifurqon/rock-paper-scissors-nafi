@@ -1,8 +1,7 @@
 class Player {
     constructor(hand, name){
         if(this.constuctor === Player){
-            throw new Error("Cannot instantiate Player Class")
-            // Because it's abstract
+            throw new Error("Cannot instantiate Player Class");
         }
         
         this.hand = hand;
@@ -50,10 +49,10 @@ class Match {
 
     getResult(playerA, playerB){
         let result;
-        const playerAHand = this.playerA.getHand().toLowerCase();
-        const playerBHand = this.playerB.getHand().toLowerCase();
-        const playerAName = this.playerA.name;
-        const playerBName = this.playerB.name;
+        const playerAHand = playerA.getHand().toLowerCase();
+        const playerBHand = playerB.getHand().toLowerCase();
+        const playerAName = playerA.name;
+        const playerBName = playerB.name;
     
         if(playerAHand == playerBHand){
             result = "draw";
@@ -91,23 +90,11 @@ class Match {
 
         return result;
     }
-}
 
-class DomHelper {
-    constructor(element){
-        this.element = element;
-    }
-
-    removeAllChild() {
-        while (this.element.firstChild) {
-            this.element.removeChild(this.element.firstChild);
-        }
-    }
-
-    showPlayer1Win() {
-        if(this.element.className == 'versus-wrapper'){
-            this.element.classList.replace('versus-wrapper', 'player-1-result');
-            this.removeAllChild();
+    showPlayer1Win(element) {
+        if(element.className == 'versus-wrapper'){
+            element.classList.replace('versus-wrapper', 'player-1-result');
+            removeAllChild(element);
         }
     
         const player1Text = document.createElement('h2');
@@ -123,14 +110,14 @@ class DomHelper {
         player1WinText.classList.add('m-0');
         player1WinText.innerHTML = 'win';
     
-        this.element.appendChild(player1Text);
-        this.element.appendChild(player1WinText);
+        element.appendChild(player1Text);
+        element.appendChild(player1WinText);
     }
 
-    showComWin() {
-        if(this.element.className == 'versus-wrapper'){
-            this.element.classList.replace('versus-wrapper', 'com-result');
-            this.removeAllChild();
+    showComWin(element) {
+        if(element.className == 'versus-wrapper'){
+            element.classList.replace('versus-wrapper', 'com-result');
+            removeAllChild(element);
         }
     
         const comText = document.createElement('h2');
@@ -146,14 +133,14 @@ class DomHelper {
         comWinText.classList.add('m-0');
         comWinText.innerHTML = 'win';
     
-        this.element.appendChild(comText);
-        this.element.appendChild(comWinText);
+        element.appendChild(comText);
+        element.appendChild(comWinText);
     }
     
-    showDraw() {
-        if(this.element.className == 'versus-wrapper'){
-            this.element.classList.replace('versus-wrapper', 'draw-result');
-            this.removeAllChild();
+    showDraw(element) {
+        if(element.className == 'versus-wrapper'){
+            element.classList.replace('versus-wrapper', 'draw-result');
+            removeAllChild(element);
         }
     
         const drawText = document.createElement('h2');
@@ -163,13 +150,33 @@ class DomHelper {
         drawText.classList.add('m-0');
         drawText.innerHTML = 'draw';
     
-        this.element.appendChild(drawText);
+        element.appendChild(drawText);
+    }
+
+    showResult(result){
+        if(result == "player 1"){
+            this.showPlayer1Win(resultBody);
+        }
+    
+        if(result == "com"){
+            this.showComWin(resultBody);
+        }
+    
+        if(result == "draw"){
+            this.showDraw(resultBody);
+        }
     }
 }
 
 let player1Hand;
 let comHand;
 const resultBody = document.getElementById('result-body');
+
+function removeAllChild(element) {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+}
 
 function action(event) {
     const eventButton = event.target || event.srcElement;
@@ -178,23 +185,11 @@ function action(event) {
         let Player1 = new Human(eventButton.id, "Player 1")
         let Com = new Computer();
         let Games = new Match(Player1, Com);
-        let Help = new DomHelper(resultBody);
         
-        const result = Games.getResult();
+        const result = Games.getResult(Player1, Com);
         comHand = Com.hand;
         player1Hand = Player1.hand;
-    
-        if(result == "player 1"){
-            Help.showPlayer1Win();
-        }
-    
-        if(result == "com"){
-            Help.showComWin();
-        }
-    
-        if(result == "draw"){
-            Help.showDraw();
-        }
+        Games.showResult(result);
         
         console.log(`${Player1.name}: ${player1Hand}. ${Com.name}: ${comHand}. Result: ${result == "draw" ? result : result+' win'}`);
     }
@@ -206,8 +201,7 @@ function refresh() {
         document.querySelector(`.player-choice-box#${player1Hand}`).classList.remove('active');
     }
 
-    let refreshHelp = new DomHelper(resultBody);
-    refreshHelp.removeAllChild();
+    removeAllChild(resultBody);
 
     resultBody.className = '';
     resultBody.classList.add('versus-wrapper');
