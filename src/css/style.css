@@ -9,7 +9,7 @@ body {
     flex: 1;
     justify-content: space-between;
     height: 100vh;
-    background-image: url('../images/main-bg.jpg'); 
+    background-image: url('../images/landing/main-bg.jpg'); 
     background-repeat: no-repeat; 
     background-size: 100vw 100vh;
     color: white;
@@ -19,8 +19,8 @@ body {
     background-color:rgba(0,0,0,.2);
 }
 
-.main > .navbar > .container > .navbar-brand {
-    font-size: 1.5rem;
+.main > .navbar > .container > .navbar-brand > .logo {
+    width: 3vw;
 }
 
 .main > .navbar > .container > .navbar-collapse > ul.navbar-nav.left {
@@ -76,7 +76,7 @@ body {
 
 /* about css */
 .about {
-    background: url('../images/the-games-bg.jpg');
+    background: url('../images/landing/the-games-bg.jpg');
     background-repeat: no-repeat; 
     background-size: 100vw 100vh;
     color: white;
@@ -108,7 +108,7 @@ body {
 
 /* feature css */
 .feature {
-    background: url('../images/features.jpg');
+    background: url('../images/landing/features.jpg');
     background-repeat: no-repeat; 
     background-size: 100vw 100vh;
     color: white;
@@ -159,7 +159,7 @@ body {
 
 /* system css */
 .system {
-    background: url('../images/requirements.png');
+    background: url('../images/landing/requirements.png');
     background-repeat: no-repeat; 
     background-size: 100vw 100vh;
     color: white;
@@ -195,7 +195,7 @@ body {
 
 /* top-score css */
 .top-score {
-    background: url('../images/top-score-bg.jpg');
+    background: url('../images/landing/top-score-bg.jpg');
     background-repeat: no-repeat; 
     background-size: auto;
     color: white;
@@ -267,7 +267,7 @@ body {
 }
 
 .subscribe-wrapper > .container > .row > .img-subscribe-wrapper {
-    background-image: url('../images/img-subscribe.png');
+    background-image: url('../images/landing/img-subscribe.png');
     background-repeat: no-repeat; 
     background-size: contain;
     background-position: center;
@@ -405,6 +405,10 @@ body {
         font-size: 3rem;
         font-weight: bold;
     }
+
+    .main > .navbar > .container > .navbar-brand > .logo {
+        width: 5vw;
+    }
     /* end main css */
 
     /* system css */
@@ -456,6 +460,12 @@ body {
 
 /* Surface Duo 540px */
 @media (max-width: 540px) {
+    /* main css */
+    .main > .navbar > .container > .navbar-brand > .logo {
+        width: 8vw;
+    }
+    /* end main css */
+    
     .feature > .row > .col-md-6 > .right > .row > .progress-feature {
         width: 10%;
     }
@@ -475,6 +485,10 @@ body {
     .main {
         background-position: center;
         background-size: cover;
+    }
+
+    .main > .navbar > .container > .navbar-brand > .logo {
+        width: 10vw;
     }
     /* end main css */
 
@@ -597,6 +611,10 @@ body {
     .main > main > h1 {
         font-size: 2.5rem;
         font-weight: bold;
+    }
+
+    .main > .navbar > .container > .navbar-brand > .logo {
+        width: 12vw;
     }
     /* end main css */
 

@@ -1,0 +1,157 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    background: #9C835F;
+}
+
+.back-icon{
+    width: 3vw;
+}
+
+.logo {
+    width: 4vw;
+}
+
+.title {
+    color: #F9B23D;
+}
+
+.rock {
+    width: 10vw;
+}
+
+.paper {
+    width: 8vw;
+}
+
+.versus-text {
+    color: #BD0000;
+    font-size: 9rem;
+}
+
+.scissors {
+    width: 8vw;
+}
+
+.btn-refresh {
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.btn-refresh:focus {
+    outline: none;
+}
+
+.refresh {
+    width: 6vw;
+    cursor: pointer;
+}
+
+.player-choice-box,
+.com-choice-box {
+    padding: 1rem;
+    border-radius: 10%;
+}
+
+.player-choice-box,
+.com-choice-box,
+.btn-refresh {
+    background: none;
+    border: none;
+}
+
+.player-choice-box:hover,
+.btn-refresh:hover,
+.active {
+    background-color: #C4C4C4;
+    outline: none;
+}
+
+.player-1-result {
+    color: white;
+    background-color: #4C9654;
+    padding: 1rem;
+    border-radius: 10%;
+    transform: rotate(-30deg);
+}
+
+.draw-result {
+    color: white;
+    background-color: #035B0C;
+    padding: 1.875rem 3rem;
+    border-radius: 10%;
+    transform: rotate(-30deg);
+}
+
+.com-result {
+    color: white;
+    background-color: #4C9654;
+    padding: 1rem 3rem;
+    border-radius: 10%;
+    transform: rotate(-30deg);
+}
+
+/* Laptop - 1024px */
+@media (max-width: 1024px){
+    html {
+        font-size: 12px;
+    }
+
+    .rock {
+        width: 12vw;
+    }
+
+    .paper {
+        width: 10vw;
+    }
+
+    .scissors {
+        width: 10vw;
+    }
+}
+
+/* Tablet - 768px */
+@media (max-width: 768px){    
+    .main-games{
+        display: flex;
+        height: 100vh;
+        align-items: center;
+    }
+    
+    .back-icon{
+        width: 4vw;
+    }
+    
+    .logo {
+        width: 5vw;
+    }
+}
+
+/* Mobile L - 425px */
+@media (max-width: 540px){
+    html {
+        font-size: 6px;
+    }
+
+    .rock {
+        width: 14vw;
+    }
+
+    .paper {
+        width: 12vw;
+    }
+
+    .scissors {
+        width: 12vw;
+    }
+}
+
+/* Mobile M - 375px*/
+@media (max-width: 375px){
+    html {
+        font-size: 4px;
+    }
+}
+
