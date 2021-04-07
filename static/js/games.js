@@ -123,14 +123,15 @@ function refresh() {
     if(comHand && player1Hand && versusWrapper.classList.contains('d-none')){
         document.querySelector(`.com-choice-box#${comHand}`).classList.remove('active');
         document.querySelector(`.player-choice-box#${player1Hand}`).classList.remove('active');
-    }
-
-    versusWrapper.classList.replace('d-none', 'd-block');
-
-    for (let i = 0; i < resultBody.length; i++) {
-        const element = resultBody[i];
-        if(element.classList.contains('d-block')){
-            element.classList.replace('d-block', 'd-none')
+        
+        versusWrapper.classList.replace('d-none', 'd-block');
+    
+        for (let i = 0; i < resultBody.length; i++) {
+            const element = resultBody[i];
+            if(element.classList.contains('d-block')){
+                element.classList.replace('d-block', 'd-none')
+            }
         }
     }
+
 }
