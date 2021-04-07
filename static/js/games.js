@@ -64,13 +64,13 @@ class Match {
             }
 
             if(playerBHand == "scissors"){
-                result = "player 1";
+                result = "player-1";
             }
         }
 
         if(playerAHand == "paper"){
             if(playerBHand == "rock"){
-                result = "player 1";
+                result = "player-1";
             }
 
             if(playerBHand == "scissors"){
@@ -84,104 +84,28 @@ class Match {
             }
 
             if(playerBHand == "paper"){
-                result = "player 1";
+                result = "player-1";
             }
         }
 
         return result;
     }
 
-    showPlayer1Win(element) {
-        if(element.className == 'versus-wrapper'){
-            element.classList.replace('versus-wrapper', 'player-1-result');
-            removeAllChild(element);
-        }
-    
-        const player1Text = document.createElement('h2');
-        const player1WinText = document.createElement('h2');
-        
-        player1Text.classList.add('text-uppercase');
-        player1Text.classList.add('p-0');
-        player1Text.classList.add('m-0');
-        player1Text.innerHTML = 'player 1';
-        
-        player1WinText.classList.add('text-uppercase');
-        player1WinText.classList.add('p-0');
-        player1WinText.classList.add('m-0');
-        player1WinText.innerHTML = 'win';
-    
-        element.appendChild(player1Text);
-        element.appendChild(player1WinText);
-    }
-
-    showComWin(element) {
-        if(element.className == 'versus-wrapper'){
-            element.classList.replace('versus-wrapper', 'com-result');
-            removeAllChild(element);
-        }
-    
-        const comText = document.createElement('h2');
-        const comWinText = document.createElement('h2');
-        
-        comText.classList.add('text-uppercase');
-        comText.classList.add('p-0');
-        comText.classList.add('m-0');
-        comText.innerHTML = 'com';
-        
-        comWinText.classList.add('text-uppercase');
-        comWinText.classList.add('p-0');
-        comWinText.classList.add('m-0');
-        comWinText.innerHTML = 'win';
-    
-        element.appendChild(comText);
-        element.appendChild(comWinText);
-    }
-    
-    showDraw(element) {
-        if(element.className == 'versus-wrapper'){
-            element.classList.replace('versus-wrapper', 'draw-result');
-            removeAllChild(element);
-        }
-    
-        const drawText = document.createElement('h2');
-        
-        drawText.classList.add('text-uppercase');
-        drawText.classList.add('p-0');
-        drawText.classList.add('m-0');
-        drawText.innerHTML = 'draw';
-    
-        element.appendChild(drawText);
-    }
-
     showResult(result){
-        if(result == "player 1"){
-            this.showPlayer1Win(resultBody);
-        }
-    
-        if(result == "com"){
-            this.showComWin(resultBody);
-        }
-    
-        if(result == "draw"){
-            this.showDraw(resultBody);
-        }
+        versusWrapper.classList.replace('d-block', 'd-none');
+        document.getElementById(`${result}-result`).classList.replace('d-none', 'd-block');
     }
 }
 
 let player1Hand;
 let comHand;
-const resultBody = document.getElementById('result-body');
-
-function removeAllChild(element) {
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-}
+const resultBody = document.getElementsByClassName('result-body');
+const versusWrapper = document.getElementById('versus-wrapper');
 
 function action(event) {
     const eventButton = event.target || event.srcElement;
 
-    if(resultBody.classList.contains('versus-wrapper')){
+    if(versusWrapper.classList.contains('d-block')){
         let Player1 = new Human(eventButton.id, "Player 1")
         let Com = new Computer();
         let Games = new Match(Player1, Com);
@@ -196,21 +120,17 @@ function action(event) {
 }
 
 function refresh() {
-    if(comHand && player1Hand && !resultBody.classList.contains('versus-wrapper')){
+    if(comHand && player1Hand && versusWrapper.classList.contains('d-none')){
         document.querySelector(`.com-choice-box#${comHand}`).classList.remove('active');
         document.querySelector(`.player-choice-box#${player1Hand}`).classList.remove('active');
     }
 
-    removeAllChild(resultBody);
+    versusWrapper.classList.replace('d-none', 'd-block');
 
-    resultBody.className = '';
-    resultBody.classList.add('versus-wrapper');
-    const versusText = document.createElement('h2');
-
-    versusText.classList.add('text-uppercase');
-    versusText.classList.add('font-weight-bold');
-    versusText.classList.add('versus-text');
-    versusText.innerHTML = 'vs';
-
-    resultBody.appendChild(versusText);
+    for (let i = 0; i < resultBody.length; i++) {
+        const element = resultBody[i];
+        if(element.classList.contains('d-block')){
+            element.classList.replace('d-block', 'd-none')
+        }
+    }
 }

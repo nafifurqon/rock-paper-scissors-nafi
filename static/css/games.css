@@ -52,7 +52,7 @@ body {
 .player-choice-box,
 .com-choice-box {
     padding: 1rem;
-    border-radius: 10%;
+    border-radius: 0.5rem;
 }
 
 .player-choice-box,
@@ -69,27 +69,26 @@ body {
     outline: none;
 }
 
-.player-1-result {
+#player-1-result {
     color: white;
     background-color: #4C9654;
     padding: 1rem;
-    border-radius: 10%;
+    border-radius: 0.5rem;
     transform: rotate(-30deg);
 }
 
-.draw-result {
+#draw-result {
     color: white;
     background-color: #035B0C;
     padding: 1.875rem 3rem;
-    border-radius: 10%;
+    border-radius: 0.5rem;
     transform: rotate(-30deg);
 }
-
-.com-result {
+#com-result {
     color: white;
     background-color: #4C9654;
     padding: 1rem 3rem;
-    border-radius: 10%;
+    border-radius: 0.5rem;
     transform: rotate(-30deg);
 }
 
