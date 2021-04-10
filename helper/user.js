@@ -15,7 +15,7 @@ const validateUser = (email, password, res) => {
 }
 
 const generateId = (database) => {
-    let id = 0;
+    let id = 1;
     if(database.length > 0){
         id = database[database.length - 1].id + 1
     }
@@ -23,4 +23,13 @@ const generateId = (database) => {
     return id;
 }
 
-module.exports = { validateUser, generateId }
+const checkUserOnDatabase = (user, res) => {
+    if(!user){
+        res.status(404).json({
+            message: "User not found"
+        })
+        return;
+    }
+}
+
+module.exports = { validateUser, generateId, checkUserOnDatabase }

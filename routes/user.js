@@ -53,6 +53,7 @@ router.put('/:id', (req, res) => {
     let user = users.find(item => item.id === +req.params.id);
 
     userHelper.validateUser(email, password, res);
+    userHelper.checkUserOnDatabase(user, res);
 
     const params = { 
         email: req.body.email,
@@ -68,6 +69,8 @@ router.put('/:id', (req, res) => {
 //Delete user
 router.delete('/:id', (req, res) => {
     let user = users.find(item => item.id === +req.params.id);
+
+    userHelper.checkUserOnDatabase(user, res);
 
     users = users.filter(item => item.id !== +req.params.id);
     fs.writeFileSync('db/users.json', JSON.stringify(users));
