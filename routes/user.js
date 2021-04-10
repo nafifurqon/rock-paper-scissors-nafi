@@ -71,4 +71,31 @@ router.post('/login', (req, res) => {
     res.status(200).json(user);
 })
 
+//Update user
+router.put('/:id', (req, res) => {
+    const { email, password } = req.body;
+    let user = users.find(item => item.id === +req.params.id);
+
+    validateUser(email, password, res);
+
+    const params = { 
+        email: req.body.email,
+        password: req.body.password
+    }
+    user = { ...user, ...params }
+
+    users = users.map((item) => item.id == user.id ? user : item);
+    fs.writeFileSync('db/users.json', JSON.stringify(users));
+    res.status(200).json({user, message: "Successfully updated user"});
+})
+
+//Delete user
+router.delete('/:id', (req, res) => {
+    let user = users.find(item => item.id === +req.params.id);
+
+    users = users.filter(item => item.id !== +req.params.id);
+    fs.writeFileSync('db/users.json', JSON.stringify(users));
+    res.status(200).json({message: `Successfully deleted user ${user.email}`})
+})
+
 module.exports = router
