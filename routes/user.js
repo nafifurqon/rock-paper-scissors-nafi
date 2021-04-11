@@ -17,9 +17,17 @@ router.post('/register', (req, res) => {
 
     userHelper.validateUser(email, password, res);
 
+    let user = users.find((user) => user.email === email && user.password === password);
+    if(user){
+        res.status(400).json({
+            message: "User is already registered"
+        })
+        return;
+    };
+
     id = userHelper.generateId(users);
 
-    const user = {
+    user = {
         id, email, password
     }
 
@@ -53,7 +61,7 @@ router.put('/:id', (req, res) => {
     let user = users.find(item => item.id === +req.params.id);
 
     userHelper.validateUser(email, password, res);
-    userHelper.checkUserOnDatabase(user, res);
+    userHelper.checkUserNotRegistered(user, res);
 
     const params = { 
         email: req.body.email,
@@ -70,7 +78,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     let user = users.find(item => item.id === +req.params.id);
 
-    userHelper.checkUserOnDatabase(user, res);
+    userHelper.checkUserNotRegistered(user, res);
 
     users = users.filter(item => item.id !== +req.params.id);
     fs.writeFileSync('db/users.json', JSON.stringify(users));

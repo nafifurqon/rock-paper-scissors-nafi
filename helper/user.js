@@ -23,7 +23,7 @@ const generateId = (database) => {
     return id;
 }
 
-const checkUserOnDatabase = (user, res) => {
+const checkUserNotRegistered = (user, res) => {
     if(!user){
         res.status(404).json({
             message: "User not found"
@@ -32,4 +32,4 @@ const checkUserOnDatabase = (user, res) => {
     }
 }
 
-module.exports = { validateUser, generateId, checkUserOnDatabase }
+module.exports = { validateUser, generateId, checkUserNotRegistered }
