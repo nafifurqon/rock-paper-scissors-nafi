@@ -17,7 +17,7 @@ router.post('/register', (req, res) => {
 
     userHelper.validateUser(email, password, res);
 
-    let user = users.find((user) => user.email === email && user.password === password);
+    let user = users.find((user) => user.email === email);
     if(user){
         res.status(400).json({
             message: "User is already registered"

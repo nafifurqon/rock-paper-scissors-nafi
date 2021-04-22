@@ -15,8 +15,8 @@
                 <h1>Register</h1>
                 <form action="/register" method="POST">
                     <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label for="email">Username</label>
+                        <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter username">
                         <% if(locals.emailErrorMessage) { %>
                             <small class="text-danger"><%= emailErrorMessage %></small>
                         <% } %>
@@ -34,6 +34,8 @@
                     <% } %>
                 </form>
                 <p>Already have an account? please <a href="/login">login</a></p>
+                <p><a href="/">Back</a> to Home</p>
+                <p class="text-danger">Be careful the website is still under development. There are no security features. Just provide a random password if you want to try the games.</p>
             </div>
         </div>
     </div>

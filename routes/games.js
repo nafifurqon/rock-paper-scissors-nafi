@@ -44,7 +44,7 @@ router.post('/register', (req, res) => {
         return;
     }
 
-    let user = users.find((user) => user.email === email && user.password === password);
+    let user = users.find((user) => user.email === email);
     if(user){
         res.render('users/register', {
             userErrorMessage: "User is already registered. Please login."
