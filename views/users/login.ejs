@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login User</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <h1>Login</h1>
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="email">Username</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter username">
+                        <% if(locals.emailErrorMessage) { %>
+                            <small class="text-danger"><%= emailErrorMessage %></small>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        <% if(locals.passwordErrorMessage) { %>
+                            <small class="text-danger"><%= passwordErrorMessage %></small>
+                        <% } %>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <% if(locals.userErrorMessage) { %>
+                        <small class="text-danger d-block"><%= userErrorMessage %></small>
+                    <% } %>
+                </form>
+                <p>Don't have an account yet? please <a href="/register">register</a></p>
+                <p><a href="/">Back</a> to Home</p>
+                <p class="text-danger">Be careful the website is still under development. There are no security features. Just provide a random password if you want to try the games.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

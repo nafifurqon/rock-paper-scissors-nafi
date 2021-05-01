@@ -45,12 +45,20 @@
             </ul>
   
             <ul class="navbar-nav right ml-lg-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Sign Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Log In</a>
-              </li>
+              <% if(locals.userLogin) { %>
+                <form action="/logout" method="post">
+                  <li class="nav-item">
+                    <button type="submit" class="nav-link btn-logout">Log Out</button>
+                  </li>
+                </form> 
+              <% } else { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/register">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Log In</a>
+                </li>
+              <% } %>
             </ul>
   
           </div>

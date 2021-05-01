@@ -33,13 +33,23 @@ body {
     justify-content: space-between;
 }
 
-.main > .navbar > .container > .navbar-collapse > .navbar-nav > .nav-item > .nav-link {
+.main > .navbar > .container > .navbar-collapse > .navbar-nav > .nav-item > .nav-link,
+.main > .navbar > .container > .navbar-collapse > .navbar-nav > form > .nav-item > .btn-logout {
     color: white;
     font-size: 0.75rem;
     font-weight: bold;
 }
 
-.main > .navbar > .container > .navbar-collapse > .navbar-nav > .nav-item > .nav-link:hover {
+.main > .navbar > .container > .navbar-collapse > .navbar-nav > form > .nav-item > .btn-logout {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.main > .navbar > .container > .navbar-collapse > .navbar-nav > .nav-item > .nav-link:hover,
+.main > .navbar > .container > .navbar-collapse > .navbar-nav > form > .nav-item > .btn-logout:hover {
     text-decoration: underline;
 }
 
