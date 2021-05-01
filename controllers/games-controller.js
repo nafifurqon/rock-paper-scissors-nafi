@@ -1,33 +1,31 @@
-const express = require('express');
-const router = express.Router();
 const fs = require('fs')
 const userHelper = require('../helper/user');
 
 let users = require('../db/users.json');
 let userLogin = "";
 
-router.get('/', (req, res) => {
+const getHomePage = (req, res) => {
     res.render('home', { userLogin })
-})
+};
 
-router.get('/games', (req, res) => {
+const getGamesPage = (req, res) => {
     if (userLogin) {
         res.render('games', { userLogin })
         return;
     } else {
         res.redirect('/login')
     }
-})
+};
 
-router.get('/register', (req, res) => {
+const getRegisterPage = (req, res) => {
     res.render('users/register');
-})
+};
 
-router.get('/login', (req, res) => {
+const getLoginPage = (req, res) => {
     res.render('users/login');
-})
+};
 
-router.post('/register', (req, res) => {
+const createUserGames = (req, res) => {
     const { email, password } = req.body;
 
     if (!email || email === '') {
@@ -62,9 +60,9 @@ router.post('/register', (req, res) => {
     fs.writeFileSync('db/users.json', JSON.stringify(users));
 
     res.status(201).redirect('/login');
-})
+};
 
-router.post('/login', (req, res) => {
+const loginUserGames = (req, res) => {
     const { email, password } = req.body;
 
     if (!email || email === '') {
@@ -91,11 +89,19 @@ router.post('/login', (req, res) => {
 
     userLogin = user;
     res.redirect('/');
-})
+};
 
-router.post('/logout', (req, res) => {
+const logoutUserGames = (req, res) => {
     userLogin = "";
     res.redirect('/');
-})
+};
 
-module.exports = router
+module.exports = {
+    getHomePage,
+    getGamesPage,
+    getRegisterPage,
+    getLoginPage,
+    createUserGames,
+    loginUserGames,
+    logoutUserGames,
+}

@@ -1,18 +1,12 @@
-const express = require('express');
-const router = express.Router();
 const fs = require('fs');
 const userHelper = require('../helper/user')
-
 let users = require('../db/users.json');
-router.use(express.json());
 
-// Get All User
-router.get('/', (req, res) => {
+const getAllUsers = (req, res) => {
     res.status(200).json(users);
-})
+};
 
-// Register user
-router.post('/register', (req, res) => {
+const createUser = (req, res) => {
     const { email, password } = req.body
 
     userHelper.validateUser(email, password, res);
@@ -35,10 +29,9 @@ router.post('/register', (req, res) => {
     fs.writeFileSync('db/users.json', JSON.stringify(users));
 
     res.status(201).json(user);
-})
+};
 
-// Login User
-router.post('/login', (req, res) => {
+const loginUser = (req, res) => {
     const { email, password } = req.body;
 
     userHelper.validateUser(email, password, res);
@@ -53,10 +46,9 @@ router.post('/login', (req, res) => {
     }
 
     res.status(200).json(user);
-})
+};
 
-//Update user
-router.put('/:id', (req, res) => {
+const updateUser = (req, res) => {
     const { email, password } = req.body;
     let user = users.find(item => item.id === +req.params.id);
 
@@ -72,10 +64,9 @@ router.put('/:id', (req, res) => {
     users = users.map((item) => item.id == user.id ? user : item);
     fs.writeFileSync('db/users.json', JSON.stringify(users));
     res.status(200).json({ user, message: "Successfully updated user" });
-})
+};
 
-//Delete user
-router.delete('/:id', (req, res) => {
+const deleteUser = (req, res) => {
     let user = users.find(item => item.id === +req.params.id);
 
     userHelper.checkUserNotRegistered(user, res);
@@ -83,6 +74,12 @@ router.delete('/:id', (req, res) => {
     users = users.filter(item => item.id !== +req.params.id);
     fs.writeFileSync('db/users.json', JSON.stringify(users));
     res.status(200).json({ message: `Successfully deleted user ${user.email}` })
-})
+};
 
-module.exports = router
+module.exports = {
+    getAllUsers,
+    createUser,
+    loginUser,
+    updateUser,
+    deleteUser,
+}
