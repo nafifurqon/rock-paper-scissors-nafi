@@ -7,12 +7,12 @@ let users = require('../db/users.json');
 let userLogin = "";
 
 router.get('/', (req, res) => {
-    res.render('home', {userLogin})
+    res.render('home', { userLogin })
 })
 
 router.get('/games', (req, res) => {
-    if(userLogin){
-        res.render('games', {userLogin})
+    if (userLogin) {
+        res.render('games', { userLogin })
         return;
     } else {
         res.redirect('/login')
@@ -30,14 +30,14 @@ router.get('/login', (req, res) => {
 router.post('/register', (req, res) => {
     const { email, password } = req.body;
 
-    if(!email || email === ''){
+    if (!email || email === '') {
         res.render('users/register', {
             emailErrorMessage: "Email is required"
         })
         return;
     }
 
-    if(!password || password === ''){
+    if (!password || password === '') {
         res.render('users/register', {
             passwordErrorMessage: "Password is required"
         })
@@ -45,8 +45,8 @@ router.post('/register', (req, res) => {
     }
 
     let user = users.find((user) => user.email === email);
-    if(user){
-        res.render('users/register', {
+    if (user) {
+        res.status(409).render('users/register', {
             userErrorMessage: "User is already registered. Please login."
         })
         return;
@@ -67,14 +67,14 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
 
-    if(!email || email === ''){
+    if (!email || email === '') {
         res.render('users/login', {
             emailErrorMessage: "Email is required"
         })
         return;
     }
 
-    if(!password || password === ''){
+    if (!password || password === '') {
         res.render('users/login', {
             passwordErrorMessage: "Password is required"
         })
@@ -82,7 +82,7 @@ router.post('/login', (req, res) => {
     }
 
     let user = users.find((user) => user.email === email && user.password === password);
-    if(!user){
+    if (!user) {
         res.render('users/login', {
             userErrorMessage: "Invalid email or password"
         })

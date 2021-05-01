@@ -18,8 +18,8 @@ router.post('/register', (req, res) => {
     userHelper.validateUser(email, password, res);
 
     let user = users.find((user) => user.email === email);
-    if(user){
-        res.status(400).json({
+    if (user) {
+        res.status(409).json({
             message: "User is already registered"
         })
         return;
@@ -44,8 +44,8 @@ router.post('/login', (req, res) => {
     userHelper.validateUser(email, password, res);
 
     const user = users.find((user) => user.email === email && user.password === password);
-    
-    if(!user){
+
+    if (!user) {
         res.status(401).json({
             message: "Invalid email or password"
         });
@@ -63,7 +63,7 @@ router.put('/:id', (req, res) => {
     userHelper.validateUser(email, password, res);
     userHelper.checkUserNotRegistered(user, res);
 
-    const params = { 
+    const params = {
         email: req.body.email,
         password: req.body.password
     }
@@ -71,7 +71,7 @@ router.put('/:id', (req, res) => {
 
     users = users.map((item) => item.id == user.id ? user : item);
     fs.writeFileSync('db/users.json', JSON.stringify(users));
-    res.status(200).json({user, message: "Successfully updated user"});
+    res.status(200).json({ user, message: "Successfully updated user" });
 })
 
 //Delete user
@@ -82,7 +82,7 @@ router.delete('/:id', (req, res) => {
 
     users = users.filter(item => item.id !== +req.params.id);
     fs.writeFileSync('db/users.json', JSON.stringify(users));
-    res.status(200).json({message: `Successfully deleted user ${user.email}`})
+    res.status(200).json({ message: `Successfully deleted user ${user.email}` })
 })
 
 module.exports = router
