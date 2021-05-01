@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       const { User } = models;
-      this.belongsTo(User, { foreignKey: 'player_1', as: 'matches' });
-      this.belongsTo(User, { foreignKey: 'player_2', as: 'matches' });
+      this.belongsTo(User, { foreignKey: 'player_1', as: 'player_1_match' });
+      this.belongsTo(User, { foreignKey: 'player_2', as: 'player_2_match' });
     }
   };
   Match.init({
