@@ -1,45 +1,70 @@
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Users</h1>
-</div>
+<%- include('../partials/header.ejs') %>
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
-        <i class="fas fa-plus"></i>
-      </button>
-    </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-                <th>No</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Role</th>
-                <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% users.forEach((user, index) => { %>
-                <tr>
-                    <td><%= index += 1 %></td>
-                    <td><%= user.email %></td>
-                    <td><%= user.password %></td>
-                    <td><%= user.role %></td>
-                    <td>
-                      <a class="btn-warning btn-circle" href=""><i class="fas fa-edit"></i></a>
-                      <a class="btn-danger btn-circle" href=""><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
-            <% }) %>
-          </tbody>
-        </table>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include('../partials/sidebar.ejs') %>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <%- include('../partials/topbar.ejs') %>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+              <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Users</h1>
+              </div>
+
+              <%- include('table-user.ejs') %>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <%- include('../partials/footer.ejs') %>
+          <!-- End of Footer -->
+
       </div>
-    </div>
-</div>
-<!-- End of DataTales Example -->
+      <!-- End of Content Wrapper -->
 
-<%- include('add-modal.ejs') %>
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Include add modal -->
+  <%- include('add-user-modal.ejs') %>
+  <%- include('update-user-modal.ejs') %>
+
+  <!-- Scroll to Top Button-->
+  <%- include('../partials/scroll-to-top-button.ejs') %>
+
+  <%- include('../partials/js.ejs') %>
+
+  <script>
+    $('#usersTable').on('click', '.btn-user-update', function() {
+      const uuid = $(this).data('uuid');
+      const email = $(this).data('email');
+      const password = $(this).data('password');
+      const role = $(this).data('role');
+      
+      $('#update-modal').modal('show');
+
+      $('.uuid').val(uuid);
+      $('.email').val(email);
+      $('.password').val(password);
+      $('.role').val(role);
+    })
+  </script>
+
+</body>
+
+</html>

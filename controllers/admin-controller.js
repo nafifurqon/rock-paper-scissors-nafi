@@ -1,9 +1,9 @@
 const { User, Match } = require('../models');
 
-const getDashboard = async (req, res) => {
-    try {
-        const url = req.originalUrl;
+const roles = ['admin', 'player'];
 
+const showDashboard = async (req, res) => {
+    try {
         const countPlayers = await User.count({
             col: 'uuid',
             where: { role: 'player' },
@@ -13,8 +13,7 @@ const getDashboard = async (req, res) => {
             col: 'uuid',
         });
 
-        res.status(200).render('admin/index', {
-            url,
+        res.status(200).render('admin/dashboard/dashboard', {
             countPlayers,
             countMatches
         });
@@ -24,14 +23,11 @@ const getDashboard = async (req, res) => {
     }
 };
 
-const getAllUsers = async (req, res) => {
+const showAllUsers = async (req, res) => {
     try {
-        const url = req.originalUrl;
         const users = await User.findAll();
-        const roles = ['admin', 'player'];
 
-        res.status(200).render('admin/index', {
-            url,
+        res.status(200).render('admin/user/view-users', {
             users,
             roles,
         });
@@ -49,7 +45,40 @@ const createUser = async (req, res) => {
             email,
             password,
             role,
-        })
+        });
+
+        res.redirect('/admin/users');
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
+const updateUser = async (req, res) => {
+    try {
+        const { email, password, role, uuid } = req.body;
+
+        await User.update({
+            email,
+            password,
+            role,
+        }, {
+            where: { uuid },
+        });
+
+        res.redirect('/admin/users');
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
+const deleteUser = async (req, res) => {
+    try {
+        const uuid = req.params.uuid;
+        await User.destroy({
+            where: { uuid },
+        });
 
         res.redirect('/admin/users');
     } catch (error) {
@@ -59,7 +88,9 @@ const createUser = async (req, res) => {
 };
 
 module.exports = {
-    getDashboard,
-    getAllUsers,
-    createUser
+    showDashboard,
+    showAllUsers,
+    createUser,
+    updateUser,
+    deleteUser
 }

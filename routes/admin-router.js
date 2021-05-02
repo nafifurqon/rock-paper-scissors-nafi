@@ -1,15 +1,19 @@
 const express = require('express');
 const adminRouter = express.Router();
 const {
-    getDashboard,
-    getAllUsers,
-    createUser
+    showDashboard,
+    showAllUsers,
+    createUser,
+    updateUser,
+    deleteUser,
 } = require('../controllers/admin-controller');
 
 adminRouter.use(express.json());
 
-adminRouter.get('/', getDashboard);
-adminRouter.get('/users', getAllUsers);
+adminRouter.get('/', showDashboard);
+adminRouter.get('/users', showAllUsers);
 adminRouter.post('/users', createUser);
+adminRouter.put('/users', updateUser);
+adminRouter.delete('/users/:uuid', deleteUser);
 
 module.exports = adminRouter;
