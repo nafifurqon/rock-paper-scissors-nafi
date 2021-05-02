@@ -1,7 +1,7 @@
 const fs = require('fs');
-const { User, UserProfile, Match } = require('../models');
-const userHelper = require('../helper/user');
-let users = require('../db/users.json');
+const { User, UserProfile, Match } = require('../../models');
+const userHelper = require('../../helper/user');
+let users = require('../../db/users.json');
 
 const getAllUsers = async (req, res) => {
     try {

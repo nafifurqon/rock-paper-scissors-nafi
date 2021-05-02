@@ -8,7 +8,7 @@ const {
     createUserGames,
     loginUserGames,
     logoutUserGames,
-} = require('../controllers/games-controller');
+} = require('../controllers/frontend/games-controller');
 
 router.get('/', getHomePage);
 router.get('/games', getGamesPage);

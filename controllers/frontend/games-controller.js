@@ -1,7 +1,7 @@
 const fs = require('fs')
-const userHelper = require('../helper/user');
+const userHelper = require('../../helper/user');
 
-let users = require('../db/users.json');
+let users = require('../../db/users.json');
 let userLogin = "";
 
 const getHomePage = (req, res) => {
