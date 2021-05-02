@@ -10,14 +10,34 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ User }) {
-      this.belongsTo(User, { foreignKey: 'user_id', as: 'user_profile' });
+      this.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
     }
   };
   UserProfile.init({
-    full_name: DataTypes.STRING,
-    job: DataTypes.STRING,
-    bio: DataTypes.STRING,
-    user_id: DataTypes.UUID
+    uuid: {
+      allowNull: false,
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4
+    },
+    full_name: {
+      type: DataTypes.STRING,
+    },
+    job: {
+      type: DataTypes.STRING
+    },
+    bio: {
+      type: DataTypes.STRING
+    },
+    user_id: {
+      type: DataTypes.UUID,
+      references: {
+        model: 'users',
+        key: 'uuid',
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }
+    },
   }, {
     sequelize,
     modelName: 'UserProfile',

@@ -19,10 +19,10 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
               <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Users</h1>
+                <h1 class="h3 mb-0 text-gray-800">User Profile</h1>
               </div>
 
-              <%- include('table-user.ejs') %>
+              <%- include('table-user-profile.ejs') %>
 
             </div>
             <!-- /.container-fluid -->
@@ -41,8 +41,8 @@
   <!-- End of Page Wrapper -->
 
   <!-- Include modal -->
-  <%- include('add-user-modal.ejs') %>
-  <%- include('update-user-modal.ejs') %>
+  <%- include('add-user-profile-modal.ejs') %>
+  <%- include('update-user-profile-modal.ejs') %>
 
   <!-- Scroll to Top Button-->
   <%- include('../partials/scroll-to-top-button.ejs') %>
@@ -50,18 +50,23 @@
   <%- include('../partials/js.ejs') %>
 
   <script>
-    $('#usersTable').on('click', '.btn-user-update', function() {
+    $('#userProfilesTable').on('click', '.btn-user-profile-update', function() {
       const uuid = $(this).data('uuid');
-      const email = $(this).data('email');
-      const password = $(this).data('password');
-      const role = $(this).data('role');
-      
+      const fullName = $(this).data('full_name');
+      const job = $(this).data('job');
+      const bio = $(this).data('bio');
+      const userId = $(this).data('user_id');
+      const userEmail = $(this).data('email');
+      console.log(userEmail)
       $('#update-modal').modal('show');
 
       $('.uuid').val(uuid);
-      $('.email').val(email);
-      $('.password').val(password);
-      $('.role').val(role);
+      $('.fullName').val(fullName);
+      $('.job').val(job);
+      $('.bio').val(bio);
+      $('.userId').val(userId);
+      $('.userEmail').val(userId);
+      $('.userEmail').html(userEmail);
     })
   </script>
 
