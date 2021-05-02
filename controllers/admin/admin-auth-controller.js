@@ -21,6 +21,7 @@ const showDashboardHome = async (req, res) => {
                 countPlayers,
                 countMatches,
                 userLogin,
+                title: 'RPS Admin | Dashboard'
             });
             return;
         }
@@ -35,7 +36,9 @@ const showDashboardHome = async (req, res) => {
 
 const showLoginPage = async (req, res) => {
     try {
-        await res.status(200).render('admin/auth/login');
+        await res.status(200).render('admin/auth/login', {
+            title: 'RPS Admin | Lofgin'
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: error.message });

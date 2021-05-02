@@ -24,6 +24,7 @@ const showAllMatches = async (req, res) => {
                 hands,
                 results,
                 userLogin,
+                title: 'RPS Admin | Match'
             });
             return;
         }

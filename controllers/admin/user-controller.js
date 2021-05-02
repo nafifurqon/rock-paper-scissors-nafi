@@ -11,7 +11,8 @@ const showAllUsers = async (req, res) => {
             res.status(200).render('admin/user/view-users', {
                 users,
                 roles,
-                userLogin
+                userLogin,
+                title: 'RPS Admin | User'
             });
             return;
         }

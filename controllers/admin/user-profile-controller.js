@@ -19,6 +19,7 @@ const showAllUserProfiles = async (req, res) => {
                 userProfiles,
                 users,
                 userLogin,
+                title: 'RPS Admin | User Profile'
             });
             return;
         }
