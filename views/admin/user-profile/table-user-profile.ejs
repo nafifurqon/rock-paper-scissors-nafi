@@ -12,6 +12,8 @@
                         <th>No</th>
                         <th>Full Name</th>
                         <th>Email</th>
+                        <th>Job</th>
+                        <th>Bio</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -23,6 +25,12 @@
                             </td>
                             <td>
                                 <%= userProfile.full_name %>
+                            </td>
+                            <td>
+                                <%= userProfile.job %>
+                            </td>
+                            <td>
+                                <%= userProfile.bio %>
                             </td>
                             <% if (userProfile.user) { %>
                                 <td><%= userProfile.user.email %></td>

@@ -1,5 +1,5 @@
 const { QueryTypes } = require('sequelize');
-const { User, UserProfile, sequelize } = require('../../models');
+const { UserProfile, sequelize } = require('../../models');
 
 const showAllUserProfiles = async (req, res) => {
     try {

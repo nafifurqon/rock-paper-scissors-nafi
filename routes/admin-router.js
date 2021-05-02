@@ -13,6 +13,12 @@ const {
     updateUserProfile,
     deleteUserProfile,
 } = require('../controllers/admin/user-profile-controller');
+const {
+    showAllMatches,
+    createMatch,
+    updateMatch,
+    deleteMatch,
+} = require('../controllers/admin/match-controller');
 adminRouter.use(express.json());
 
 // Dashboard Home
@@ -29,5 +35,11 @@ adminRouter.get('/user-profiles', showAllUserProfiles);
 adminRouter.post('/user-profiles', createUserProfile);
 adminRouter.put('/user-profiles', updateUserProfile);
 adminRouter.delete('/user-profiles/:uuid', deleteUserProfile);
+
+//Match
+adminRouter.get('/matches', showAllMatches);
+adminRouter.post('/matches', createMatch);
+adminRouter.put('/matches', updateMatch);
+adminRouter.delete('/matches/:uuid', deleteMatch);
 
 module.exports = adminRouter;

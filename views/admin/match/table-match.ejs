@@ -1,0 +1,70 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-match-modal">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="matchesTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Player 1</th>
+                        <th>Player 2</th>
+                        <th>Player 1 Hand</th>
+                        <th>Player 2 Hand</th>
+                        <th>Result</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% matches.forEach((match, index)=> { %>
+                        <tr>
+                            <td>
+                                <%= index +=1 %>
+                            </td>
+                            <td>
+                                <%= match.user_1.email %>
+                            </td>
+                            <td>
+                                <%= match.user_2.email %>
+                            </td>
+                            <td>
+                                <%= match.player_1_hand %>
+                            </td>
+                            <td>
+                                <%= match.player_2_hand %>
+                            </td>
+                            <td>
+                                <%= match.result %>
+                            </td>
+                            
+
+                            <td>
+                                <form action="/admin/matches/<%= match.uuid %>?_method=DELETE" method="POST">
+                                    <a 
+                                        class="btn-sm btn-warning btn-circle btn-match-update" 
+                                        type="button"
+                                        href="javascript:void()"
+                                        data-uuid="<%= match.uuid %>"
+                                        data-player_1="<%= match.player_1 %>"
+                                        data-player_2="<%= match.player_2 %>"
+                                        data-player_1_hand="<%= match.player_1_hand %>"
+                                        data-player_2_hand="<%= match.player_2_hand %>"
+                                        data-result="<%= match.result %>"
+                                    >
+                                            <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button type="submit" class="btn-sm btn-danger btn-circle">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
