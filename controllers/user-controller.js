@@ -1,79 +1,194 @@
 const fs = require('fs');
-const userHelper = require('../helper/user')
+const { User, UserProfile, Match } = require('../models');
+const userHelper = require('../helper/user');
 let users = require('../db/users.json');
 
-const getAllUsers = (req, res) => {
-    res.status(200).json(users);
-};
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.findAll({
+            include: ['user_profile', 'player_1_match', 'player_2_match']
+        });
 
-const createUser = (req, res) => {
-    const { email, password } = req.body
-
-    userHelper.validateUser(email, password, res);
-
-    let user = users.find((user) => user.email === email);
-    if (user) {
-        res.status(409).json({
-            message: "User is already registered"
-        })
-        return;
-    };
-
-    id = userHelper.generateId(users);
-
-    user = {
-        id, email, password
+        res.status(200).json({
+            status: 'success',
+            message: 'success get data',
+            data: users,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
     }
-
-    users.push(user);
-    fs.writeFileSync('db/users.json', JSON.stringify(users));
-
-    res.status(201).json(user);
 };
 
-const loginUser = (req, res) => {
-    const { email, password } = req.body;
+const createUser = async (req, res) => {
+    try {
+        const { email, password, role } = req.body
 
-    userHelper.validateUser(email, password, res);
+        userHelper.validateUser(email, password, res);
 
-    const user = users.find((user) => user.email === email && user.password === password);
+        let user = await User.findOne({
+            where: { email },
+        });
+        if (user) {
+            res.status(409).json({
+                status: 'failed',
+                message: 'User is already registered',
+                data: null
+            })
+            return;
+        };
 
-    if (!user) {
-        res.status(401).json({
-            message: "Invalid email or password"
+        user = {
+            email, password, role
+        }
+
+        await User.create({
+            email,
+            password,
+            role,
+        });
+
+        res.status(201).json({
+            status: 'success',
+            message: 'success create data',
+            data: user,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            status: 'failed',
+            message: error.message,
+            data: null,
+        });
+    }
+};
+
+const getUserById = async (req, res) => {
+    try {
+        const uuid = req.params.uuid;
+
+        const user = await User.findOne({
+            include: ['user_profile', 'player_1_match', 'player_2_match'],
+            where: { uuid }
+        });
+
+        res.status(200).json({
+            status: 'success',
+            message: 'success get data',
+            data: user,
         });
         return;
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
     }
+}
 
-    res.status(200).json(user);
+const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        userHelper.validateUser(email, password, res);
+
+        const user = await User.findOne({
+            where: { email, password }
+        });
+
+        if (!user) {
+            res.status(401).json({
+                status: 'failed',
+                message: "Invalid email or password",
+                data: null,
+            });
+            return;
+        }
+
+        res.status(200).json({
+            status: 'success',
+            message: 'success get data',
+            data: user,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
+    }
 };
 
-const updateUser = (req, res) => {
-    const { email, password } = req.body;
-    let user = users.find(item => item.id === +req.params.id);
+const updateUser = async (req, res) => {
+    try {
+        const { email, password, role } = req.body;
+        const uuid = req.params.uuid;
 
-    userHelper.validateUser(email, password, res);
-    userHelper.checkUserNotRegistered(user, res);
+        userHelper.validateUser(email, password, res);
 
-    const params = {
-        email: req.body.email,
-        password: req.body.password
+        let user = await User.findOne({
+            where: { uuid }
+        });
+
+        if (user) {
+            await User.update({
+                email,
+                password,
+                role,
+            }, {
+                where: { uuid },
+            });
+
+            user = await User.findOne({
+                where: { uuid }
+            });
+
+            res.status(200).json({
+                status: 'success',
+                message: 'success update data',
+                data: user,
+            });
+            return;
+        }
+
+        res.status(400).json({
+            status: 'failed',
+            message: 'failed update data',
+            data: null,
+        });
+        return;
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
     }
-    user = { ...user, ...params }
-
-    users = users.map((item) => item.id == user.id ? user : item);
-    fs.writeFileSync('db/users.json', JSON.stringify(users));
-    res.status(200).json({ user, message: "Successfully updated user" });
 };
 
-const deleteUser = (req, res) => {
-    let user = users.find(item => item.id === +req.params.id);
+const deleteUser = async (req, res) => {
+    try {
+        const uuid = req.params.uuid;
 
-    userHelper.checkUserNotRegistered(user, res);
+        await User.destroy({
+            where: { uuid },
+        });
 
-    users = users.filter(item => item.id !== +req.params.id);
-    fs.writeFileSync('db/users.json', JSON.stringify(users));
-    res.status(200).json({ message: `Successfully deleted user ${user.email}` })
+        res.status(200).json({
+            status: 'success',
+            message: `Successfully deleted user with ${uuid}`
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
+    }
 };
 
 module.exports = {
@@ -82,4 +197,5 @@ module.exports = {
     loginUser,
     updateUser,
     deleteUser,
+    getUserById,
 }
