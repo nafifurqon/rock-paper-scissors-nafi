@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const port = 3000;
 const {
     adminRouter,
@@ -8,9 +9,10 @@ const {
 } = require('./routes');
 
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static('static'));
 app.use('/sb-admin-2', express.static('node_modules/startbootstrap-sb-admin-2'));
-app.use(express.urlencoded({ extended: false }));
 
 app.use('/', gamesRouter);
 app.use('/api/v1/users', userRouter)

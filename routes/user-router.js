@@ -8,8 +8,6 @@ const {
     deleteUser,
 } = require('../controllers/user-controller');
 
-router.use(express.json());
-
 router.get('/', getAllUsers)
 router.post('/register', createUser);
 router.post('/login', loginUser);

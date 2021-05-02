@@ -29,7 +29,10 @@
                     <td><%= user.email %></td>
                     <td><%= user.password %></td>
                     <td><%= user.role %></td>
-                    <td></td>
+                    <td>
+                      <a class="btn-warning btn-circle" href=""><i class="fas fa-edit"></i></a>
+                      <a class="btn-danger btn-circle" href=""><i class="fas fa-trash"></i></a>
+                    </td>
                 </tr>
             <% }) %>
           </tbody>
@@ -38,3 +41,5 @@
     </div>
 </div>
 <!-- End of DataTales Example -->
+
+<%- include('add-modal.ejs') %>
