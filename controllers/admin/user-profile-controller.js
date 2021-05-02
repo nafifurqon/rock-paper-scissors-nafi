@@ -1,21 +1,30 @@
 const { QueryTypes } = require('sequelize');
 const { UserProfile, sequelize } = require('../../models');
 
+let userLogin = require('./user-login.json');
+
 const showAllUserProfiles = async (req, res) => {
     try {
-        const userProfiles = await UserProfile.findAll({
-            include: 'user'
-        });
+        if (userLogin.email == 'admin@rps.com') {
+            const userProfiles = await UserProfile.findAll({
+                include: 'user'
+            });
 
-        const users = await sequelize.query(
-            "select uuid, email from users where role = 'player' and uuid not in ( select user_id from user_profiles )",
-            { type: QueryTypes.SELECT }
-        );
+            const users = await sequelize.query(
+                "select uuid, email from users where role = 'player' and uuid not in ( select user_id from user_profiles )",
+                { type: QueryTypes.SELECT }
+            );
 
-        res.status(200).render('admin/user-profile/view-user-profiles', {
-            userProfiles,
-            users,
-        });
+            res.status(200).render('admin/user-profile/view-user-profiles', {
+                userProfiles,
+                users,
+                userLogin,
+            });
+            return;
+        }
+
+        res.status(200).redirect('/admin/auth/login');
+        return;
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: error.message });

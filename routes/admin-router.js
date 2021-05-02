@@ -1,12 +1,11 @@
 const express = require('express');
 const adminRouter = express.Router();
 const {
-    showDashboard,
     showAllUsers,
     createUser,
     updateUser,
     deleteUser,
-} = require('../controllers/admin-controller');
+} = require('../controllers/admin/user-controller');
 const {
     showAllUserProfiles,
     createUserProfile,
@@ -19,10 +18,19 @@ const {
     updateMatch,
     deleteMatch,
 } = require('../controllers/admin/match-controller');
+const {
+    showDashboardHome,
+    showLoginPage,
+    actionLogin,
+    actionLogout,
+} = require('../controllers/admin/admin-auth-controller');
 adminRouter.use(express.json());
 
 // Dashboard Home
-adminRouter.get('/', showDashboard);
+adminRouter.get('/', showDashboardHome);
+adminRouter.get('/auth/login', showLoginPage);
+adminRouter.post('/auth/login', actionLogin);
+adminRouter.post('/auth/logout', actionLogout)
 
 // User
 adminRouter.get('/users', showAllUsers);

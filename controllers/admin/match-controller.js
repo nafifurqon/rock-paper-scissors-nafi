@@ -4,23 +4,32 @@ const { Match, User, sequelize } = require('../../models');
 const hands = ['rock', 'paper', 'scissors'];
 const results = ['Player 1 Win', 'Player 2 Win', 'Draw'];
 
+let userLogin = require('./user-login.json');
+
 const showAllMatches = async (req, res) => {
     try {
-        const matches = await Match.findAll({
-            include: ['user_1', 'user_2'],
-        });
+        if (userLogin.email == 'admin@rps.com') {
+            const matches = await Match.findAll({
+                include: ['user_1', 'user_2'],
+            });
 
-        const users = await User.findAll({
-            attributes: ['uuid', 'email'],
-            where: { role: 'player' },
-        });
+            const users = await User.findAll({
+                attributes: ['uuid', 'email'],
+                where: { role: 'player' },
+            });
 
-        res.status(200).render('admin/match/view-match', {
-            matches,
-            users,
-            hands,
-            results,
-        });
+            res.status(200).render('admin/match/view-match', {
+                matches,
+                users,
+                hands,
+                results,
+                userLogin,
+            });
+            return;
+        }
+
+        res.status(200).redirect('/admin/auth/login');
+        return;
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: error.message });

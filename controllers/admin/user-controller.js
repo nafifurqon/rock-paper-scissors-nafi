@@ -1,36 +1,23 @@
-const { User, Match } = require('../models');
+const { User } = require('../../models');
 
+let userLogin = require('./user-login.json');
 const roles = ['admin', 'player'];
-
-const showDashboard = async (req, res) => {
-    try {
-        const countPlayers = await User.count({
-            col: 'uuid',
-            where: { role: 'player' },
-        });
-
-        const countMatches = await Match.count({
-            col: 'uuid',
-        });
-
-        res.status(200).render('admin/dashboard/dashboard', {
-            countPlayers,
-            countMatches
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: error.message });
-    }
-};
 
 const showAllUsers = async (req, res) => {
     try {
-        const users = await User.findAll();
+        if (userLogin.email == 'admin@rps.com') {
+            const users = await User.findAll();
 
-        res.status(200).render('admin/user/view-users', {
-            users,
-            roles,
-        });
+            res.status(200).render('admin/user/view-users', {
+                users,
+                roles,
+                userLogin
+            });
+            return;
+        }
+
+        res.status(200).redirect('/admin/auth/login');
+        return;
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: error.message });
@@ -88,7 +75,6 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
-    showDashboard,
     showAllUsers,
     createUser,
     updateUser,
