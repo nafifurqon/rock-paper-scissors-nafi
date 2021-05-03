@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { User, UserProfile, Match } = require('../../models');
+const { User } = require('../../models');
 const userHelper = require('../../helper/user');
 let users = require('../../db/users.json');
 

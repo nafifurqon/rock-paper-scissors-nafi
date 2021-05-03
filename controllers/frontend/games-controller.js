@@ -1,99 +1,143 @@
-const fs = require('fs')
+const { User } = require('../../models');
 const userHelper = require('../../helper/user');
 
 let users = require('../../db/users.json');
-let userLogin = "";
+let userLogin = '';
 
-const getHomePage = (req, res) => {
-    res.render('home', { userLogin })
+const getHomePage = async (req, res) => {
+    try {
+        res.render('game/home', {
+            userLogin,
+            title: 'RPS Game | Home'
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
+    }
 };
 
-const getGamesPage = (req, res) => {
-    if (userLogin) {
-        res.render('games', { userLogin })
-        return;
-    } else {
+const getGamesPage = async (req, res) => {
+    try {
+        if (userLogin.email) {
+            res.render('game/games', {
+                title: 'RPS Game | Games'
+            });
+            return;
+        }
+
         res.redirect('/login')
+        return;
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
     }
 };
 
-const getRegisterPage = (req, res) => {
-    res.render('users/register');
-};
-
-const getLoginPage = (req, res) => {
-    res.render('users/login');
-};
-
-const createUserGames = (req, res) => {
-    const { email, password } = req.body;
-
-    if (!email || email === '') {
+const getRegisterPage = async (req, res) => {
+    try {
         res.render('users/register', {
-            emailErrorMessage: "Email is required"
-        })
-        return;
+            errorMessage: '',
+            title: 'RPS Game | Register',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
     }
-
-    if (!password || password === '') {
-        res.render('users/register', {
-            passwordErrorMessage: "Password is required"
-        })
-        return;
-    }
-
-    let user = users.find((user) => user.email === email);
-    if (user) {
-        res.status(409).render('users/register', {
-            userErrorMessage: "User is already registered. Please login."
-        })
-        return;
-    }
-
-    id = userHelper.generateId(users);
-
-    user = {
-        id, email, password
-    };
-
-    users.push(user);
-    fs.writeFileSync('db/users.json', JSON.stringify(users));
-
-    res.status(201).redirect('/login');
 };
 
-const loginUserGames = (req, res) => {
-    const { email, password } = req.body;
-
-    if (!email || email === '') {
+const getLoginPage = async (req, res) => {
+    try {
         res.render('users/login', {
-            emailErrorMessage: "Email is required"
-        })
-        return;
+            errorMessage: '',
+            title: 'RPS Game | Login'
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
     }
+};
 
-    if (!password || password === '') {
-        res.render('users/login', {
-            passwordErrorMessage: "Password is required"
-        })
+const createUserGames = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        let user = await User.findOne({
+            where: { email },
+        });
+
+        if (user) {
+            res.status(409).render('users/register', {
+                errorMessage: "User is already registered. Please login."
+            })
+            return;
+        }
+
+        await User.create({
+            email,
+            password,
+            role: 'player',
+        });
+
+        await res.status(201).redirect('/login');
         return;
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
     }
+};
 
-    let user = users.find((user) => user.email === email && user.password === password);
-    if (!user) {
-        res.render('users/login', {
-            userErrorMessage: "Invalid email or password"
-        })
-        return;
+const loginUserGames = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        let user = await User.findOne({
+            where: { email, password }
+        });
+
+        if (!user) {
+            res.render('users/login', {
+                errorMessage: "Invalid email or password"
+            })
+            return;
+        }
+
+        userLogin = user;
+        res.redirect('/');
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
     }
-
-    userLogin = user;
-    res.redirect('/');
 };
 
 const logoutUserGames = (req, res) => {
-    userLogin = "";
-    res.redirect('/');
+    try {
+        userLogin = [];
+        res.redirect('/');
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error.message,
+            data: null,
+        });
+    }
 };
 
 module.exports = {

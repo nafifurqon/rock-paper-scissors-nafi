@@ -37,7 +37,7 @@ const showDashboardHome = async (req, res) => {
 const showLoginPage = async (req, res) => {
     try {
         await res.status(200).render('admin/auth/login', {
-            title: 'RPS Admin | Lofgin'
+            title: 'RPS Admin | Login'
         });
     } catch (error) {
         console.log(error);
