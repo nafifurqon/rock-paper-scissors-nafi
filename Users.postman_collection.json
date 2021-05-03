@@ -1,15 +1,27 @@
 {
 	"info": {
-		"_postman_id": "c9e2091d-b636-4700-b3e2-aeec50d7a15f",
+		"_postman_id": "b5482658-5405-4b1c-bdbd-9a0672ae25df",
 		"name": "Users",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get Users",
+			"name": "Get All Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"nafi2@email.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "localhost:3000/api/v1/users/",
 					"host": [
@@ -27,13 +39,13 @@
 			"response": []
 		},
 		{
-			"name": "Post Register User",
+			"name": "Create User",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"nafi@email.com\",\n    \"password\": \"Password1234\"\n}",
+					"raw": "{\n    \"email\": \"test1234@email.com\",\n    \"password\": \"Password1234\",\n    \"role\": \"player\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -57,13 +69,34 @@
 			"response": []
 		},
 		{
-			"name": "Post Login User",
+			"name": "Get User By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/v1/users/db33b95e-a05b-4e4d-b13a-d29892a31ec4",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"db33b95e-a05b-4e4d-b13a-d29892a31ec4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"nafi@email.com\",\n    \"password\": \"Password1234\"\n}",
+					"raw": "{\n    \"email\": \"test1234@email.com\",\n    \"password\": \"Password1234\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -87,13 +120,13 @@
 			"response": []
 		},
 		{
-			"name": "Put Update User",
+			"name": "Update User",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"nafiUpdate@email.com\",\n    \"password\": \"Password1234\"\n}",
+					"raw": "{\n    \"email\": \"test1234update@email.com\",\n    \"password\": \"Password1234update\",\n    \"role\": \"admin\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,7 +134,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/v1/users/1",
+					"raw": "localhost:3000/api/v1/users/db33b95e-a05b-4e4d-b13a-d29892a31ec4",
 					"host": [
 						"localhost"
 					],
@@ -110,7 +143,7 @@
 						"api",
 						"v1",
 						"users",
-						"1"
+						"db33b95e-a05b-4e4d-b13a-d29892a31ec4"
 					]
 				}
 			},
@@ -122,7 +155,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/v1/users/1",
+					"raw": "localhost:3000/api/v1/users/db33b95e-a05b-4e4d-b13a-d29892a31ec4",
 					"host": [
 						"localhost"
 					],
@@ -131,7 +164,7 @@
 						"api",
 						"v1",
 						"users",
-						"1"
+						"db33b95e-a05b-4e4d-b13a-d29892a31ec4"
 					]
 				}
 			},
