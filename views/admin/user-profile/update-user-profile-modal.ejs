@@ -1,0 +1,51 @@
+<!--Modal -->
+<div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update User Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/admin/user-profiles?_method=PUT" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="userId">User Email</label>
+                        <select class="form-control userId" name="userId" id="userId" required>
+                            <option value="">Select user</option>
+                            <option class="userEmail" name="userEmail" id="userEmail" selected>
+                                
+                            </option>
+                            <% users.forEach( (user) => { %>
+                                <option value="<%= user.uuid %>">
+                                    <%= user.email %>
+                                </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control fullName" id="fullName" name="fullName" placeholder="Enter full name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="job">Job</label>
+                        <input type="text" class="form-control job" id="job" name="job"
+                            placeholder="Enter user job" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <input type="text" class="form-control bio" id="bio" name="bio"
+                            placeholder="Enter user bio" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" class="uuid" name="uuid">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

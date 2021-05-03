@@ -1,0 +1,58 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="usersTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach((user, index)=> { %>
+                        <tr>
+                            <td>
+                                <%= index +=1 %>
+                            </td>
+                            <td>
+                                <%= user.email %>
+                            </td>
+                            <td>
+                                <%= user.password %>
+                            </td>
+                            <td>
+                                <%= user.role %>
+                            </td>
+                            <td>
+                                <form action="/admin/users/<%= user.uuid %>?_method=DELETE" method="POST">
+                                    <a 
+                                        class="btn-sm btn-warning btn-circle btn-user-update" 
+                                        type="button"
+                                        href="javascript:void()"
+                                        data-uuid="<%= user.uuid %>"
+                                        data-email="<%= user.email %>"
+                                        data-password="<%= user.password %>"
+                                        data-role="<%= user.role %>"
+                                    >
+                                            <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button type="submit" class="btn-sm btn-danger btn-circle">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
