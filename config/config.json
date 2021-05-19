@@ -1,0 +1,24 @@
+{
+    "development": {
+      "username": "admin_nafi",
+      "password": "Rahas!@1234",
+      "database": "db_rps_development",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    },
+    "test": {
+      "username": "admin_nafi",
+      "password": "Rahas!@1234",
+      "database": "db_rps_test",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    },
+    "production": {
+      "username": "admin_nafi",
+      "password": "Rahas!@1234",
+      "database": "db_rps_production",
+      "host": "127.0.0.1",
+      "dialect": "postgres"
+    }
+}
+  
