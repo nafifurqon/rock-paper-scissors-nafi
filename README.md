@@ -6,7 +6,7 @@ There is a page for playing rock-paper-scissors game for users and there is a da
 
 ## Usage
 
-You can access the website at *[here](https://rock-paper-scissors-nafi.herokuapp.com/)*. 
+You can access the website at *[here](https://rps-nafi.herokuapp.com/)*. 
 
 And this is what you can do.
 
@@ -34,7 +34,7 @@ And this is what you can do.
 ### 8. Logout your account
 ![](image-readme/logout.png)
 
-### 9. Change the url to be like this to go to the admin dashboard. [https://rock-paper-scissors-nafi.herokuapp.com/admin](https://rock-paper-scissors-nafi.herokuapp.com/admin)
+### 9. Change the url to be like this to go to the admin dashboard. [https://rps-nafi.herokuapp.com/admin](https://rps-nafi.herokuapp.com/admin)
 ![](image-readme/go-to-admin-dashboard.PNG)
 
 ### 10. Login as admin user. Just simply click the login button. I have provided the email and password as the default value if you want to try it.
