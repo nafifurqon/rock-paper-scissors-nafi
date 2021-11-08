@@ -37,7 +37,7 @@ And this is what you can do.
 ### 9. Change the url to be like this to go to the admin dashboard. [https://rps-nafi.herokuapp.com/admin](https://rps-nafi.herokuapp.com/admin)
 ![](image-readme/go-to-admin-dashboard.PNG)
 
-### 10. Login as admin user. Just simply click the login button. I have provided the email and password as the default value if you want to try it.
+### 10. Login as admin user. Just simply click the login button. I have provided the email and password as the default value if you want to try it. It should be 'admin@rps.com' with password 'rahasia'
 ![](image-readme/login-admin-dashboard.png)
 
 ### 11. And you can act like the admin.
